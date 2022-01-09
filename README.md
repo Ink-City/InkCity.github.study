@@ -1,2 +1,2 @@
 # InkCity.github.study
-我的git学习小结。
+我的学习小结。
