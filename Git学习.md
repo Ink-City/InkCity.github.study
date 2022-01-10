@@ -11,7 +11,7 @@
 
 <table>
 	<tr align="center">
-		<th rowspan = "2">设置用户签名</th>
+		<th rowspan = "2">设置用户签名[<font color = "red">必要</font>]</th>
 		<th>设置用户名</th>
 		<th>git config --global user.name</th>
 	</tr>
@@ -20,9 +20,17 @@
 		<th>git config --global user.emal</th>
 	</tr>
 	<tr align="center">
+		<th rowspan = "3">基础操作</th>
 		<th>初始化本地库</th>
-		<th></th>
 		<th>git init</th>
+	</tr>
+	<tr align="center">
+		<th>新键文件</th>
+		<th>git touch <font color = "red">文件名</font></th>
+	</tr>
+	<tr align="center">
+		<th>删除文件</th>
+		<th>git rm <font color = "red">文件名</font></th>
 	</tr>
 	<tr align="center">
 		<th rowspan = "2">暂存区</th>
@@ -99,5 +107,4 @@
 		<th>git pull <font color = "red">地址别名</font> <font color = "red">远程分支</font></th>
 	</tr>
 </table>
-
 
