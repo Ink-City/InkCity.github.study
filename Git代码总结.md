@@ -1,12 +1,5 @@
 ### Git
 
-#### 仓库路径
-
-|  InkCity.github.study  |  https://github.com/Ink-City/InkCity.github.study.git  |
-| :--------------------: | :----------------------------------------------------: |
-| InkCity.github.sokoban | https://github.com/Ink-City/InkCity.github.sokoban.git |
-|   bin4xin.github.io    |    https://github.com/Bin4xin/bin4xin.github.io.git    |
-
 #### 代码大全
 
 <table>
@@ -107,4 +100,3 @@
 		<th>git pull <font color = "red">地址别名</font> <font color = "red">远程分支</font></th>
 	</tr>
 </table>
-
