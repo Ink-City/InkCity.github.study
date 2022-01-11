@@ -32,6 +32,6 @@ if [ $1 -eq 2 ]; then
     * ) $"exit";;
     esac
     
-    $"git add ."
-    $"git commit -m \"[`date +%Y/%m/%d/%T`]<$2>: commit by `git config --global --list|grep user.name|awk -F\"=\" '{print $2}'`\""
+    git add .
+    git commit -m "[`date +%Y/%m/%d/%T`]<$2>: commit by `git config --global --list|grep user.name|awk -F\"=\" '{print $2}'`"
 fi
