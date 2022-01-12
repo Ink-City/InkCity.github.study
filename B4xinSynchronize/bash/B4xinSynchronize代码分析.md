@@ -1,6 +1,8 @@
-### 学习笔记
+# 学习笔记
 
-#### 源码
+## Sclient.sh
+
+### 源码
 
 ```bash
 #!/bin/bash
@@ -149,12 +151,13 @@ fi
 ##Clear program framework and running status, good code style will make work easier
 run_Main
 ##redirect to main func , and main func defined what program will do next one by one or run Concurrently.
-
 ```
 
-#### 学习内容
+***
 
-##### Code Line: 2
+### 基础代码分析
+
+#### Code Line: 2
 
 当前目录的绝对路径
 
@@ -164,7 +167,9 @@ $(pwd)
 
 `$(pwd)` 等价于 `$PWD ` 
 
-##### Code Line: 3-5
+***
+
+#### Code Line: 3-5
 
 执行脚本
 
@@ -223,6 +228,198 @@ source [filename]
 
    这个父 shell 是指在一个控制终端或在一个 xterm 窗口中给你命令指示符的进程。
 
-   shell 脚本也可以启动他自已的子进程.
+   shell 脚本也可以启动他自已的子进程。
 
    这些子 shell ( 即子进程 ) 使脚本并行地，有效率地地同时运行脚本内的多个子任务。
+
+***
+
+#### Code Line 7
+
+修改变量
+
+```bash
+export [-frp][variablename]=[value]
+```
+
+**参数说明：** 
+
+* -f 　代表[变量名称]中为函数名称。
+* -n 　删除指定的变量。变量实际上并未删除，只是不会输出到后续指令的执行环境中。
+* -p 　列出所有的shell赋予程序的环境变量。
+
+***
+
+#### Code Line 17-32 `run_Main()` 
+
+* ```bash
+  run_Main() {
+    proxy_main
+    ##Determine the operating mode of the incoming parameters
+    ##mode dw to run.
+    if [ $run_mode = "dw" ]; then
+      info_show "[`date +%Y/%m/%d/%T`] [Info] Running mode is: $run_mode mode now"
+      differentWorkspace_mode_fun
+    ##mode sw to run.
+    elif [ $run_mode = "sw" ]; then
+      info_show "[`date +%Y/%m/%d/%T`] [Info] Running mode is: $run_mode mode now"
+      sameWorkspace_mode_fun
+    ##
+    elif [ $run_mode = "config" ]; then
+      Remember_Me_Fun
+    fi
+  }
+  ```
+
+* Code Line 5
+
+  `if` 判断语句
+
+  当参数 `run_mode` 的值等于 `"dw"` 时进入第一个分支。
+
+  当参数 `run_mode` 的值等于 `"sw"` 时进入第二个分支。
+
+  当参数 `run_mode` 的值等于 `"config"` 时进入第三个分支。
+
+  **参数说明：** 
+  
+  * **用法：** 
+    
+    ```bash
+    if [ value -eq value ]
+    ```
+
+    表达式为真即为真
+    
+    | 参数 | 含义   | 参数 | 含义     | 参数 | 含义     |
+    | :--: | :----- | :--: | :------- | ---- | :------- |
+    | -eq  | 等于   | -gt  | 大于     | -lt  | 小于     |
+    | -ne  | 不等于 | -ge  | 大于等于 | -le  | 小于等于 |
+    
+  * **用法：** 
+    
+    ```bash
+    if [ -a filename]
+    if [ ! -a filename]
+    ```
+  
+    以下含义均为真
+    
+    
+    | 参数 | 含义                                                    | 参数 | 含义                                                         | 参数 | 含义                                             |
+    | :--: | :------------------------------------------------------ | :--: | :----------------------------------------------------------- | :--: | ------------------------------------------------ |
+    |  -a  | <font color = "red">存在</font>                         |  -b  | <font color = "red">存在</font> ，是块特殊文件               |  -c  | <font color = "red">存在</font> ，是字符特殊文件 |
+    |  -d  | <font color = "red">存在</font> ，是一个目录            |  -e  | <font color = "red">存在</font> ，与 `-a` 相同               |  -f  | <font color = "red">存在</font> ，是正规文件     |
+    |  -g  | <font color = "red">存在</font> ，已设置 `setgid(2)` 位 |  -G  | <font color = "red">存在</font> ，组ID与此进程相同           |  -k  | <font color = "red">存在</font> ，设置了其粘滞位 |
+    |  -L  | <font color = "red">存在</font> ，是符号链接            |  -n  | 字符串长度不是零                                             |  -o  | 已在上设置命名选项                               |
+    |  -O  | <font color = "red">存在</font> ，由此进程的用户ID拥有  |  -p  | <font color = "red">存在</font> ，是先进先出、特殊文件或命名管道 |  -r  | <font color = "red">存在</font> ，用户可读       |
+    |  -s  | <font color = "red">存在</font> ，大小大于零            |  -S  | <font color = "red">存在</font> ，是套接字                   |  -t  | 文件描述符(默认为1)指定的设备为终端时            |
+    |  -u  | <font color = "red">存在</font> ，已设置 `setuid(2)` 位 |  -w  | <font color = "red">存在</font> ，用户可写                   |  -x  | <font color = "red">存在</font> ，用户可执行     |
+    |  -z  | 字符串长度为零                                          |      |                                                              |      |                                                  |
+    
+  
+  **单分支：** 
+  
+  1. ```bash
+     #if单分支第一中形式：if []
+     if [ 1 -eq 1 ] #[]里面的数据和中括号必须一个空格 
+     then
+     	echo "first if:真"
+     fi
+     ```
+     
+  2. ```bash
+     #if单分支第二中形式：if []; then
+     if [ 1 -eq 1 ]; then #then和if写在同一行必须要用; 
+     	echo "second if:真"
+     fi
+     ```
+  
+  3. ```bash
+     #if单分支第三中形式：if (())
+     if ((1==1))
+     then
+     	echo "third if:真"
+     fi
+     ```
+  
+  **多分支：** 
+  
+  1. ```bash
+     if ((1==0)) #判断1和o是不是相等
+     then
+     	echo "1=0；是真的"
+     elif ((1>0))
+     then
+     	echo "1>0;是真的"
+     else
+     	echo "1>0;是假的"
+     fi
+     ```
+     
+  2. ```bash
+     if [ 1 -eq 0 ] #判断1和o是不是相等
+     then
+     	echo "1=0；是真的"
+     elif [ 1 -gt 0 ]
+     then
+     	echo "1>0;是真的"
+     else
+     	echo "1>0;是假的"
+     fi
+     ```
+  
+  **多重判断： **
+  
+  `if` 和 `then` 任然可以写在一行。
+  
+  1. ```bash
+     if (( a > b )) && (( a < c ))
+     ...
+     ```
+     
+  2. ```bash
+     if [[ $a > $b ]] && [[ $a < $c ]]
+     ...
+     ```
+     
+  3. ```bash
+     if [ $a -gt $b -a $a -lt $c ]
+     ...
+     ```
+  
+* Code Line 14
+
+  调用函数
+
+  ```bash
+  Remember_Me_Fun
+  ```
+
+  如果需要传入参数，像调用脚本一样传参即可
+
+  ```bash
+  Function value1 value2 ...
+  ```
+
+***
+
+#### Code Line 35-47 `Remember_Me_Fun()` 
+
+* ```bash
+  Remember_Me_Fun() {
+    if [ ! -s "./config/user_config.sh" ]; then
+      touch config/user_config.sh
+      echo testPra=$testPra >>config/user_config.sh
+      echo testPra1=$testPra >>config/user_config.sh
+      echo testPra2=$testPra >>config/user_config.sh
+  
+    elif [ -s "./config/user_config.sh" ]; then
+      #statements
+      echo "user_config存在."
+    fi
+    Ask_From_Me
+  }
+  ```
+
+* 
