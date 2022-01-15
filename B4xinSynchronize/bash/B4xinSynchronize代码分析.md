@@ -1,12 +1,87 @@
-# B4xinSynchronize代码分析笔记
+# <a name="B4xinSynchronize代码分析笔记">B4xinSynchronize代码分析笔记</a> 
 
-## 目录
+## <a name="目录">目录</a> 
+
+### <a name="自动目录">自动目录</a> 
 
 [TOC]
 
-## Sclient.sh
+### <a name="手动目录">手动目录</a> 
 
-### 源码
+<update 2022-01-15 16:29>
+
+*  <a href="#B4xinSynchronize代码分析笔记">B4xinSynchronize代码分析笔记</a> 
+  *  <a href="#目录">目录</a> 
+    *  <a href="#自动目录">自动目录</a> 
+    
+    *  <a href="#手动目录">手动目录</a> 
+    
+  *  <a href="#Sclient.sh">Sclient.sh</a> 
+    *  <a href="#Sclient.sh-源码">源码</a> 
+    
+    *  <a href="#Sclient.sh-基础代码分析">基础代码分析</a> 
+    
+    *  <a href="#Sclient.sh-基础代码分析-Code Line 2">Code Line 2</a> 
+    
+    *  <a href="#Sclient.sh-基础代码分析-Code Line 3-5">Code Line 3-5</a> 
+    
+    *  <a href="#Sclient.sh-基础代码分析-Code Line 7">Code Line 7</a> 
+    
+    *  <a href="#Sclient.sh-基础代码分析-Code Line 17-32 `run_Main()`">Code Line 17-32 `run_Main()`</a> 
+    
+    *  <a href="#Sclient.sh-基础代码分析-Code Line 35-47 `Remember_Me_Fun()`">Code Line 35-47 `Remember_Me_Fun()`</a> 
+    
+    *  <a href="#Sclient.sh-基础代码分析-Code Line 50-61 `Ask_From_Me()`">Code Line 50-61 `Ask_From_Me()`</a> 
+    
+    *  <a href="#Sclient.sh-基础代码分析-Code Line 62-76 `differentWorkspace_mode_fun()`">Code Line 62-76 `differentWorkspace_mode_fun()`</a> 
+    
+    *  <a href="#Sclient.sh-基础代码分析-Code Line 78-87 `sameWorkspace_mode_fun()`">Code Line 78-87 `sameWorkspace_mode_fun()`</a> 
+    
+    *  <a href="#Sclient.sh-基础代码分析-Code Line 89-97 `git_valid_check()`">Code Line 89-97 `git_valid_check()`</a> 
+    
+    *  <a href="#Sclient.sh-基础代码分析-Code Line 99-116 `Synchronize_update_fun()`">Code Line 99-116 `Synchronize_update_fun()`</a> 
+    
+    *  <a href="#Sclient.sh-基础代码分析-Code Line 120-145">Code Line 120-145</a> 
+    
+  *  <a href="#Sserver.sh">Sserver.sh</a> 
+    *  <a href="#Sserver.sh-源码">源码</a> 
+    
+    *  <a href="#Sserver.sh-基础代码分析">基础代码分析</a> 
+    
+  *  <a href="#test.sh">test.sh</a> 
+    *  <a href="#test.sh-源码">源码</a> 
+    
+    *  <a href="#test.sh-基础代码分析">基础代码分析</a> 
+    
+  *  <a href="#functions \ banners.sh">functions \ banners.sh</a> 
+  
+    *  <a href="#functions \ banners.sh-源码">源码</a> 
+  
+    *  <a href="#functions \ banners.sh-基础代码分析">基础代码分析</a> 
+  
+  *  <a href="#functions \ color_print_fun.sh">functions \ color_print_fun.sh</a> 
+    *  <a href="#functions \ color_print_fun.sh-源码">源码</a> 
+    
+    *  <a href="#functions \ color_print_fun.sh-基础代码分析">基础代码分析</a> 
+    
+  *  <a href="#functions \ draw_table.sh">functions \ draw_table.sh</a> 
+  
+    *  <a href="#functions \ draw_table.sh-源码">源码</a> 
+  
+    *  <a href="#functions \ draw_table.sh-基础代码分析">基础代码分析</a> 
+  
+  *  <a href="#functions \ proxy.sh">functions \ proxy.sh</a> 
+  *  <a href="#functions \ proxy.sh-源码">源码</a> 
+    
+  *  <a href="#functions \ proxy.sh-基础代码分析">基础代码分析</a> 
+  
+*  <a href="#Note">Note</a> 
+
+*  <a href="#TODO">TODO</a> 
+
+## <a name="Sclient.sh">Sclient.sh</a> 
+
+### <a name="Sclient.sh-源码">源码</a> 
 
 ```bash
 #!/bin/bash
@@ -159,102 +234,99 @@ run_Main
 
 ***
 
-### 基础代码分析
+### <a name="Sclient.sh-基础代码分析">基础代码分析</a> 
 
-#### Code Line: 2
+#### <a name="Sclient.sh-基础代码分析-Code Line 2">Code Line 2</a> 
 
-当前目录的绝对路径
+* ```bash
+  whereAmI=$(pwd)
+  ```
 
-```bash
-$(pwd)
-```
+  当前目录的绝对路径
 
-`$(pwd)` 等价于 `$PWD ` 
+  `$(pwd)` 等价于 `$PWD ` 
 
-***
+#### <a name="Sclient.sh-基础代码分析-Code Line 3-5">Code Line 3-5</a> 
 
-#### Code Line: 3-5
+* ```bash
+  source ./functions/color_print_fun.sh
+  source ./functions/banners.sh
+  source ./functions/proxy.sh
+  ```
 
-执行脚本，结合后续的代码实现更像是导入文件，调用其中的函数
+  执行脚本，结合后续的代码实现更像是导入文件，调用其中的函数
 
-```bash
-source [filename]
-```
+  除此之外还有三种脚本执行方法 `sh` 、 `bash` 、 `./` 。
 
-除此之外还有三种脚本执行方法 `sh` 、 `bash` 、 `./` 。
+  1.  `source` 
 
-1.  `source` 
+     ```bash
+     source [filename]
+     ```
 
-   ```bash
-   source [filename]
-   ```
+     作用：在当前bash环境下读取并执行FileName中的命令。该filename文件可以无"执行权限"  注：该命令通常用命令“.”来替代。
 
-   作用：在当前bash环境下读取并执行FileName中的命令。该filename文件可以无"执行权限"  注：该命令通常用命令“.”来替代。
+     `source [filename]` 和 `. [filename]` 两者等效。
 
-   `source [filename]` 和 `. [filename]` 两者等效。
+     source(或点)命令通常用于重新执行刚修改的初始化文档。
 
-   source(或点)命令通常用于重新执行刚修改的初始化文档。
+     source命令(从 C Shell 而来)是bash shell的内置命令。
 
-   source命令(从 C Shell 而来)是bash shell的内置命令。
+     点命令，就是个点符号，(从Bourne Shell而来)。
 
-   点命令，就是个点符号，(从Bourne Shell而来)。
+  2.  `sh` 和 `bash` 
 
-2.  `sh` 和 `bash` 
+     ```bash
+     sh [filename]
+     bash [filename]
+     ```
 
-   ```bash
-   sh [filename]
-   bash [filename]
-   ```
+     作用：在当前bash环境下读取并执行 [filename] 中的命令。该 [filename] 文件可以无"执行权限"
 
-   作用：在当前bash环境下读取并执行 [filename] 中的命令。该 [filename] 文件可以无"执行权限"
+     注：两者在执行文件时的不同，是分别用自己的shell来跑文件。
 
-   注：两者在执行文件时的不同，是分别用自己的shell来跑文件。
+     sh使用“-n”选项进行shell脚本的语法检查，使用“-x”选项实现shell脚本逐条语句的跟踪，可以巧妙地利用shell的内置变量增强“-x”选项的输出信息等。
 
-   sh使用“-n”选项进行shell脚本的语法检查，使用“-x”选项实现shell脚本逐条语句的跟踪，可以巧妙地利用shell的内置变量增强“-x”选项的输出信息等。
+     *  `sh -x` 
 
-   *  `sh -x` 
+       调试脚本，在脚本中从 `set -x` 开始，直到 `set +x` 结束，终端中输出每条语句的信息。
 
-     调试脚本，在脚本中从 `set -x` 开始，直到 `set +x` 结束，终端中输出每条语句的信息。
+       ![image-20220112172112261](D:\Typora\Images\image-20220112172112261.png) 
 
-     ![image-20220112172112261](D:\Typora\Images\image-20220112172112261.png) 
+  3.  `./` 
 
-3.  `./` 
+     ```bash
+     ./[filename]
+     ```
 
-   ```bash
-   ./[filename]
-   ```
+     作用：打开一个子shell来读取并执行 [filename] 中命令
 
-   作用：打开一个子shell来读取并执行 [filename] 中命令。
+     注：运行一个shell脚本时会启动另一个命令解释器
 
-   注：运行一个shell脚本时会启动另一个命令解释器。
+     每个 shell 脚本有效地运行在父 shell ( parent shell ) 的一个子进程里
 
-   每个 shell 脚本有效地运行在父 shell ( parent shell ) 的一个子进程里。
+     这个父 shell 是指在一个控制终端或在一个 xterm 窗口中给你命令指示符的进程
 
-   这个父 shell 是指在一个控制终端或在一个 xterm 窗口中给你命令指示符的进程。
+     shell 脚本也可以启动他自已的子进程
 
-   shell 脚本也可以启动他自已的子进程。
+     这些子 shell ( 即子进程 ) 使脚本并行地，有效率地地同时运行脚本内的多个子任务
 
-   这些子 shell ( 即子进程 ) 使脚本并行地，有效率地地同时运行脚本内的多个子任务。
+#### <a name="Sclient.sh-基础代码分析-Code Line 7">Code Line 7</a> 
 
-***
+* ```bash
+  export PATH
+  export [-frp][variablename]=[value]
+  ```
 
-#### Code Line 7
+  修改变量
 
-修改变量
+  **参数说明：** 
 
-```bash
-export [-frp][variablename]=[value]
-```
+  * -f 　代表[变量名称]中为函数名称。
+  * -n 　删除指定的变量。变量实际上并未删除，只是不会输出到后续指令的执行环境中。
+  * -p 　列出所有的shell赋予程序的环境变量。
 
-**参数说明：** 
-
-* -f 　代表[变量名称]中为函数名称。
-* -n 　删除指定的变量。变量实际上并未删除，只是不会输出到后续指令的执行环境中。
-* -p 　列出所有的shell赋予程序的环境变量。
-
-***
-
-#### Code Line 17-32 `run_Main()` 
+#### <a name="Sclient.sh-基础代码分析-Code Line 17-32 `run_Main()`">Code Line 17-32 `run_Main()`</a> 
 
 * ```bash
   run_Main() {
@@ -417,7 +489,7 @@ export [-frp][variablename]=[value]
 
 ***
 
-#### Code Line 35-47 `Remember_Me_Fun()` 
+#### <a name="Sclient.sh-基础代码分析-Code Line 35-47 `Remember_Me_Fun()`">Code Line 35-47 `Remember_Me_Fun()`</a> 
 
 * ```bash
   Remember_Me_Fun() {
@@ -443,7 +515,7 @@ export [-frp][variablename]=[value]
   fi
   ```
 
-  `if` 语句，见 [Code Line 17-32 `run_Main()`](#Code Line 17-32 `run_Main()`) 中 `if` 语句
+  `if` 语句，见 <a href="#Sclient.sh-基础代码分析-Code Line 17-32 `run_Main()`">Sclient.sh-基础代码分析-Code Line 17-32 `run_Main()`</a> 中 `if` 语句
 
 * Code Line 3
 
@@ -473,7 +545,7 @@ export [-frp][variablename]=[value]
 
 ***
 
-#### Code Line 50-61 `Ask_From_Me()` 
+#### <a name="Sclient.sh-基础代码分析-Code Line 50-61 `Ask_From_Me()`">Code Line 50-61 `Ask_From_Me()`</a> 
 
 * ```bash
   Ask_From_Me() {
@@ -496,7 +568,7 @@ export [-frp][variablename]=[value]
   source ./config/user_config.sh
   ```
 
-  导入文件，见 [Code Line: 3-5](####Code Line: 3-5) 
+  导入文件，见 <a href="#Sclient.sh-基础代码分析-Code Line 3-5">Sclient.sh-基础代码分析-Code Line 3-5</a> 
 
 * Code Line 4
 
@@ -504,7 +576,7 @@ export [-frp][variablename]=[value]
   common_show "Detected user's conf files in ./config/user_config.sh"
   ```
 
-   `common_show` 函数，见 **<font color = "red">[TODO]</font>** 
+   `common_show` 函数，见 <a href="#TODO"><font color="red">**TODO**</font></a> 
 
 * Code Line 5
 
@@ -522,6 +594,101 @@ export [-frp][variablename]=[value]
 
        读取文件内容，参数传入下一条语句
 
+       **基本语法：** 
+       
+       * ```bash
+         cat [-AbeEnstTuv] [--help] [--version] fileName
+         ```
+       
+       * 将 `...` 覆盖写入 1.txt 文件中
+       
+         结束符 `EOF` 前不能有空格或者制表符
+       
+         ```bash
+         cat > 1.txt <<EOF
+         ...
+         EOF
+         ```
+       
+         如果在结束符前加一个 `-` 就可以无视结束符前面的制表符
+       
+         ``` bash
+         cat > 1.txt <<-EOF
+         ...
+         	EOF
+       
+       * 将 `...` 追加写入 1.txt 文件中
+       
+         结束符 `EOF` 前不能有空格或者制表符
+       
+         ````bash
+         cat >> 1.txt <<EOF
+         ...
+         EOF
+         ````
+       
+         如果在结束符前加一个 `-` 就可以无视结束符前面的制表符
+       
+         ``` bash
+         cat >> 1.txt <<-EOF
+         ...
+         	EOF
+       
+       **注意：** 
+       
+       *  `EOF` 是可更换的结束符标志
+       
+       **参数说明：** 
+       
+       *  `-n` 或 `--number` 由 1 开始对所有输出的行数编号
+       *  `-b` 或 `--number-nonblank` 和 `-n` 相似，只不过对于空白行不编号
+       *  `-s` 或 `--squeeze-blank` 当遇到有连续两行以上的空白行，就代换为一行的空白行
+       *  `-v` 或 `--show-nonprinting` 使用 `^` 和 `M-` 符号，除了 `LFD` 和 `TAB` 之外
+       *  `-E` 或 `--show-ends` 在每行结束处显示 `$` 
+       *  `-T` 或 `--show-tabs` 将 `TAB` 字符显示为 `^I` 
+       *  `-A` 或 `--show-all` 等价于 `-vET` 
+       *  `-e` 等价于 -`vE` 选项
+       *  `-t` 等价于 `-vT` 选项
+       
+       **实例：** 
+       
+       * 把 textfile1 的文档内容加上行号后输入 textfile2 这个文档里：
+       
+         ```bash
+         cat -n textfile1 > textfile2
+         ```
+       
+       * 把 textfile1 和 textfile2 的文档内容加上行号（空白行不加）之后将内容附加到 textfile3 文档里：
+       
+         ```bash
+         cat -b textfile1 textfile2 >> textfile3
+         ```
+       
+       * 清空 /etc/test.txt 文档内容：
+       
+         ```bash
+         cat /dev/null > /etc/test.txt
+         ```
+       
+       * cat 也可以用来制作镜像文件。例如要制作软盘的镜像文件，将软盘放好后输入：
+       
+         ```bash
+         cat /dev/fd0 > OUTFILE
+         ```
+       
+       * 相反的，如果想把 image file 写到软盘，输入：
+       
+         ```bash
+         cat IMG_FILE > /dev/fd0
+         ```
+       
+       **注意：** 
+       
+       * OUTFILE 指输出的镜像文件名。
+       * IMG_FILE 指镜像文件。
+       * 若从镜像文件写回 device 时，device 容量需与相当。
+       * 通常用制作开机磁片。
+       
     2. ```bash
        grep options_project
        ```
@@ -538,7 +705,7 @@ export [-frp][variablename]=[value]
 
         `'"'` 自定义分隔符 `"` 
 
-        `i <= NF` awk语句中， `$0` 表示所有参数， `$1` 表示第一个， `$NF` 表示最后一个，具体内置变量见下见下方 **`awk` 内置变量** 
+        `i <= NF` awk语句中， `$0` 表示所有参数， `$1` 表示第一个， `$NF` 表示最后一个，具体内置变量见下方 **`awk` 内置变量** 
 
         `if ($i ~/=$/) print $(i+1);i++` 如果 `$i` 变量中含有 `“=”` 打印 `$(i+1)` 变量， `i++` 
 
@@ -742,7 +909,7 @@ export [-frp][variablename]=[value]
 
   shell 睡眠 0.1s
 
-#### Code Line 62-76 `differentWorkspace_mode_fun()` 
+#### <a name="Sclient.sh-基础代码分析-Code Line 62-76 `differentWorkspace_mode_fun()`">Code Line 62-76 `differentWorkspace_mode_fun()`</a> 
 
 * ```bash
   differentWorkspace_mode_fun() {
@@ -900,7 +1067,7 @@ export [-frp][variablename]=[value]
      /tmp/-d
      ```
 
-#### Code Line 78-87 `sameWorkspace_mode_fun()` 
+#### <a name="Sclient.sh-基础代码分析-Code Line 78-87 `sameWorkspace_mode_fun()`">Code Line 78-87 `sameWorkspace_mode_fun()`</a> 
 
 * ```bash
   sameWorkspace_mode_fun() {
@@ -967,19 +1134,19 @@ export [-frp][variablename]=[value]
 
   切换目录，详情见 [Code Line 62-76 `differentWorkspace_mode_fun()`  ](####Code Line 62-76 `differentWorkspace_mode_fun()`) 
 
-#### Code Line 89-97 `git_valid_check()` 
+#### <a name="Sclient.sh-基础代码分析-Code Line 89-97 `git_valid_check()`">Code Line 89-97 `git_valid_check()`</a> 
 
-```bash
-git_valid_check() {
-  check_vaild_gitRepo=$(cd $optional_repo_gitPath && git rev-parse --is-inside-work-tree)
-  if [ "$check_vaild_gitRepo" == "true" ]; then
-    common_show "[`date +%Y/%m/%d/%T`] $optional_repo_gitPath is a valid git repository. \n But the current working directory may not be the top level. Check the output of the git rev-parse command if you care)"
-  else
-    critical "[`date +%Y/%m/%d/%T`] [CRITICAL] Invalid git repository!!"
-    exit
-  fi
-}
-```
+* ```bash
+  git_valid_check() {
+    check_vaild_gitRepo=$(cd $optional_repo_gitPath && git rev-parse --is-inside-work-tree)
+    if [ "$check_vaild_gitRepo" == "true" ]; then
+      common_show "[`date +%Y/%m/%d/%T`] $optional_repo_gitPath is a valid git repository. \n But the current working directory may not be the top level. Check the output of the git rev-parse command if you care)"
+    else
+      critical "[`date +%Y/%m/%d/%T`] [CRITICAL] Invalid git repository!!"
+      exit
+    fi
+  }
+  ```
 
 * Code Line 2
 
@@ -997,7 +1164,7 @@ git_valid_check() {
   fi
   ```
 
-   `if` 语句，详情见 [Code Line 17-32 `run_Main()` ](####Code Line 17-32 `run_Main()` ) 
+   `if` 语句，详情见 <a href="#Sclient.sh-基础代码分析-Code Line 17-32 `run_Main()`">Sclient.sh-基础代码分析-Code Line 17-32 `run_Main()`</a> 
 
 * Code Line 4
 
@@ -1013,28 +1180,28 @@ git_valid_check() {
 
     Linux时间戳
 
-#### Code Line 99-116 `Synchronize_update_fun()` 
+#### <a name="Sclient.sh-基础代码分析-Code Line 99-116 `Synchronize_update_fun()`">Code Line 99-116 `Synchronize_update_fun()`</a> 
 
-````bash
-Synchronize_update_fun() {
-  #if git,then
-  info_show "[`date +%Y/%m/%d/%T`] [Info] Synchronize update is running in $optional_repo_gitPath"
-  # i want to add commit names Distinguish by every different files (git files name) here
-  # such as :
-  # README.MD  README.MD file Mon, 31 May 2021 22:54:09 +0800 commit by B4xinSynchronize.
-  # but exactly: This feature has not yet been implemented
-  #
-  # git_commit_filename=`git log --pretty=format:"" --name-only  -1`
-  commit_author=`git config --global --list|grep user.name|awk -F"=" '{print $2}'`
-  echo -e "\033[32m[`date +%Y/%m/%d/%T`] [Info] Synchronize update is running. \033[0m"
-  git add .
-  git commit -m "[`date +%Y/%m/%d/%T`] B4xinSync: commit by $commit_author."
-  git push
-  sleep 1
-  proxy_unset
-  exit
-}
-````
+* ```bash
+  Synchronize_update_fun() {
+    #if git,then
+    info_show "[`date +%Y/%m/%d/%T`] [Info] Synchronize update is running in $optional_repo_gitPath"
+    # i want to add commit names Distinguish by every different files (git files name) here
+    # such as :
+    # README.MD  README.MD file Mon, 31 May 2021 22:54:09 +0800 commit by B4xinSynchronize.
+    # but exactly: This feature has not yet been implemented
+    #
+    # git_commit_filename=`git log --pretty=format:"" --name-only  -1`
+    commit_author=`git config --global --list|grep user.name|awk -F"=" '{print $2}'`
+    echo -e "\033[32m[`date +%Y/%m/%d/%T`] [Info] Synchronize update is running. \033[0m"
+    git add .
+    git commit -m "[`date +%Y/%m/%d/%T`] B4xinSync: commit by $commit_author."
+    git push
+    sleep 1
+    proxy_unset
+    exit
+  }
+  ```
 
 * Code Line 3
 
@@ -1060,9 +1227,9 @@ Synchronize_update_fun() {
 
      `|` 管道符
 
-     `grep` 文本搜索，详见 [Code Line 50-61 `Ask_From_Me()` ](####Code Line 50-61 `Ask_From_Me()` ) 
+     `grep` 文本搜索，详见 <a href="#Sclient.sh-基础代码分析-Code Line 50-61 `Ask_From_Me()`">Sclient.sh-基础代码分析-Code Line 50-61 `Ask_From_Me()`</a> 
 
-     `awk` 命令，详见 [Code Line 50-61 `Ask_From_Me()` ](####Code Line 50-61 `Ask_From_Me()` ) 
+     `awk` 命令，详见 <a href="#Sclient.sh-基础代码分析-Code Line 50-61 `Ask_From_Me()`">Sclient.sh-基础代码分析-Code Line 50-61 `Ask_From_Me()`</a> 
 
 * Code Line 15
 
@@ -1072,36 +1239,36 @@ Synchronize_update_fun() {
 
   睡眠 1s 
 
-#### Code Line 120-145
+#### <a name="Sclient.sh-基础代码分析-Code Line 120-145">Code Line 120-145</a> 
 
-```bash
-run_mode="$1"
-read_msg=$(echo -e "\033[32m[`date +%Y/%m/%d/%T`] [Info] Are you sure?(y/n): \033[0m")
-warn_msg=$(echo -e "\033[33m[`date +%Y/%m/%d/%T`] [Warn] PLZ type in (y/n): \033[0m")
-
-
-if [ "$run_mode" != 'dw' ] && [ "$run_mode" != 'sw' ] && [ "$run_mode" != 'config' ]; then
-  critical "[`date +%Y/%m/%d/%T`] [CRITICAL] ERROR INPUT! \nType in parameter error Usage: bash Sclient.sh <config|dw|sw>"
-  exit
-fi
-
-read -p "$read_msg" go
-while [ "$go" != 'y' ] && [ "$go" != 'n' ] && [ "$go" != '' ]; do
-  read -p "$warn_msg" go
-done
-
-if [ "$go" == 'n' ]; then
-  underline_warn_show "[`date +%Y/%m/%d/%T`] [Warn] Detected user input [no]. \nQuit!"
-  sleep 0.9
-  exit
-fi
-##Determine whether the incoming parameters are recognized by the program
-##otherwise the program will exit abnormally, let the program judge by itself.
-
-##so,what i want to show you exactly is:
-##Clear program framework and running status, good code style will make work easier
-run_Main
-```
+* ```bash
+  run_mode="$1"
+  read_msg=$(echo -e "\033[32m[`date +%Y/%m/%d/%T`] [Info] Are you sure?(y/n): \033[0m")
+  warn_msg=$(echo -e "\033[33m[`date +%Y/%m/%d/%T`] [Warn] PLZ type in (y/n): \033[0m")
+  
+  
+  if [ "$run_mode" != 'dw' ] && [ "$run_mode" != 'sw' ] && [ "$run_mode" != 'config' ]; then
+    critical "[`date +%Y/%m/%d/%T`] [CRITICAL] ERROR INPUT! \nType in parameter error Usage: bash Sclient.sh <config|dw|sw>"
+    exit
+  fi
+  
+  read -p "$read_msg" go
+  while [ "$go" != 'y' ] && [ "$go" != 'n' ] && [ "$go" != '' ]; do
+    read -p "$warn_msg" go
+  done
+  
+  if [ "$go" == 'n' ]; then
+    underline_warn_show "[`date +%Y/%m/%d/%T`] [Warn] Detected user input [no]. \nQuit!"
+    sleep 0.9
+    exit
+  fi
+  ##Determine whether the incoming parameters are recognized by the program
+  ##otherwise the program will exit abnormally, let the program judge by itself.
+  
+  ##so,what i want to show you exactly is:
+  ##Clear program framework and running status, good code style will make work easier
+  run_Main
+  ```
 
 * Code Line 1
 
@@ -1129,7 +1296,7 @@ run_Main
   fi
   ```
 
-   `if` 语句，详情见 [Code Line 17-32 `run_Main()` ](####Code Line 17-32 `run_Main()` ) 
+   `if` 语句，详情见 <a href="#Sclient.sh-基础代码分析-Code Line 17-32 `run_Main()`">Sclient.sh-基础代码分析-Code Line 17-32 `run_Main()`</a> 
 
 * Code Line 11
 
@@ -1137,7 +1304,7 @@ run_Main
   read -p "$read_msg" go
   ```
 
-  读取用户输入，详情见 [Code Line 62-76 `differentWorkspace_mode_fun()` ](####Code Line 62-76 `differentWorkspace_mode_fun()` ) 
+  读取用户输入，详情见 <a href="#Sclient.sh-基础代码分析-Code Line 62-76 `differentWorkspace_mode_fun()`">Sclient.sh-基础代码分析-Code Line 62-76 `differentWorkspace_mode_fun()`</a> 
 
 * Code Line 12-14
 
@@ -1187,9 +1354,9 @@ run_Main
 
 ***
 
-## Sserver.sh
+## <a name="Sserver.sh">Sserver.sh</a> 
 
-### 源码
+### <a name="Sserver.sh-源码">源码</a> 
 
 ```bash
 #!/bin/bash
@@ -1279,15 +1446,425 @@ fi
 Run_Main
 ```
 
-### 基础代码分析
+### <a name="Sserver.sh-基础代码分析">基础代码分析</a> 
+
+#### <a name="Sserver.sh-基础代码分析-Code Line 3">Code Line 3</a> 
+
+* ```bash
+  source ./functions/color_print_fun.sh
+  ```
+
+  导入文件，详情见 <a href="#Sclient.sh-基础代码分析-Code Line 3-5">Sclient.sh-基础代码分析-Code Line 3-5</a> 
+
+#### <a name="Sserver.sh-基础代码分析-Code Line 5-36 `Loading_Percent_Show()`">Code Line 5-36 `Loading_Percent_Show()`</a> 
+
+* ```bash
+  Loading_Percent_Show(){
+  i=0
+  str=""
+  while [ $i -le 50 ]
+  do
+      let index=i%4
+      if [ $i -le 5 ]; then
+          let bg=34
+      elif [ $i -le 30 ]; then
+          let bg=33
+      elif [ $i -le 45 ]; then
+          let bg=31
+      else
+          let bg=32
+      fi
+      printf "[\033[${bg}m%-s\033[0m %3c %c\r" "$str>]"
+      sleep 0.01
+      let i=i+1
+      str+="="
+  done
+  sleep 0.3
+  printf "\n"
+  echo  "[备份计划] >> [crontab -l > config/golbal_var.sh.]..."
+  info_show "● [Info]任务1: $Crontab_task_show_bakUP ----------> DONE....."
+  sleep 0.9
+  echo "[写入计划] >> [config/golbal_var.sh]..."
+  info_show "● [Info]任务2: $Crontab_task_show_addPlan ----------> DONE....."
+  sleep 0.9
+  echo "[执行计划] << [config/golbal_var.sh]..."
+  info_show "● [Info]任务3: $Crontab_task_show_runCron ----------> DONE....."
+  sleep 0.9
+  }
+  ```
+
+* Code Line 4-20
+
+  ```bash
+  while [ $i -le 50 ]
+  do
+  	...
+  done
+  ```
+
+   `while` 循环，详情见 <a href="#Sclient.sh-基础代码分析-Code Line 120-145">Sclient.sh-基础代码分析-Code Line 120-145</a> 
+
+* Code Line 6
+
+  ```bash
+  let index=i%4
+  ```
+
+   `let` 命令是 BASH 中用于计算的工具，用于执行一个或多个表达式，变量计算中不需要加上 `$` 来表示变量。如果表达式中包含了空格或其他特殊字符，则必须引起来
+
+  **基本语法：** 
+
+  * ```bash
+    let arg [arg ...]
+    ```
+
+* Code Line 7-15
+
+  ```bash
+  if [...]; then
+  	...
+  fi
+  ```
+
+   `if` 语句，详情见 <a href="#Sclient.sh-基础代码分析-Code Line 17-32 `run_Main()`">Sclient.sh-基础代码分析-Code Line 17-32 `run_Main()`</a> 
+
+* Code Line 17
+
+  ```bash
+  sleep 0.01
+  ```
+
+  睡眠 0.01s 
+
+* Code Line 24
+
+  ```bash
+  info_show "● [Info]任务1: $Crontab_task_show_bakUP ----------> DONE....."
+  ```
+
+  调用函数并传入参数
+
+#### <a name="Sserver.sh-基础代码分析-Code Line 38-57 `CrontabPlan_Main()`">Code Line 38-57 `CrontabPlan_Main()`</a> 
+
+* ```bash
+  CrontabPlan_Main(){
+  	#bakup crontab plan to files(in this progarm:config/golbal_var.sh)
+  	printf "\033[49;33m备份您的当前的Crontab计划\033[0m\n"
+  	crontab -l >> config/golbal_var.sh && crontab -l >> config/golbal_var.bak
+  	##
+    cat >$work_path/.git/hooks/HOOK_B4xinSynchronize<<EOF
+  #!/bin/bash
+  PATH=$PATH:/usr/bin
+  cd $work_path && git checkout -f
+  EOF
+  
+  	##
+  	#add new plan >> config/golbal_var.sh
+  	cat >>config/golbal_var.sh<<EOF
+  * * * * * bash $work_path/.git/hooks/HOOK_B4xinSynchronize
+  EOF
+    #exec newest cron plan
+    printf "\033[49;33m执行添加最新的Crontab计划\033[0m\n"
+    crontab config/golbal_var.sh
+  }
+  ```
+
+* Code Line 4
+
+  ```bash
+  crontab -l >> config/golbal_var.sh && crontab -l >> config/golbal_var.bak
+  ```
+
+   `crontab` 是用来定期执行程序的命令
+
+  当安装完成操作系统之后，默认便会启动此任务调度命令
+
+   `crond` 命令每分钟会定期检查是否有要执行的工作，如果有要执行的工作便会自动执行该工作
+
+  **基本语法：** 
+
+  * ```bash
+    crontab [ -u user ] file
+    ```
+
+  **参数说明：** 
+
+  *  `-e` ：执行文字编辑器来设定时程表，内定的文字编辑器是 VI，如果你想用别的文字编辑器，则请先设定 VISUAL 环境变数来指定使用那个文字编辑器(比如说 setenv VISUAL joe)
+  *  `-r` ：删除目前的时程表
+  *  `-l` ：列出目前的时程表
+
+  **时间格式：** 
+
+  * ```bash
+    f1 f2 f3 f4 f5 program
+    ```
+
+    - 其中 `f1` 是表示分钟，`f2` 表示小时，`f3` 表示一个月份中的第几日，`f4` 表示月份，`f5` 表示一个星期中的第几天。 `program` 表示要执行的程序
+
+    - 当 `f1` 为 `*` 时表示每分钟都要执行 `program` ， `f2` 为 `*` 时表示每小时都要执行程序，以此类推
+
+    - 当 `f1` 为 `a-b` 时表示从第 `a` 分钟到第 `b` 分钟这段时间内要执行， `f2` 为 `a-b` 时表示从第 `a` 到第 `b` 小时都要执行，以此类推
+
+    - 当 `f1` 为 `*/n` 时表示每 `n` 分钟时间间隔执行一次， `f2` 为 `*/n` 表示每 `n` 小时时间间隔执行一次，以此类推
+
+    - 当 `f1` 为 `a, b, c,...` 时表示第 `a, b, c,...` 分钟要执行， `f2 为 a, b, c,...` 时表示第 `a, b, c...`个小时要执行，以此类推
+
+    - ```
+      f1   f2   f3   f4   f5
+      -    -    -    -    -
+      |    |    |    |    |
+      |    |    |    |    +----- 星期中星期几 (0 - 6) (星期天 为0)
+      |    |    |    +---------- 月份 (1 - 12) 
+      |    |    +--------------- 一个月中的第几天 (1 - 31)
+      |    +-------------------- 小时 (0 - 23)
+      +------------------------- 分钟 (0 - 59)
+      ```
+
+    - 使用者也可以将所有的设定先存放在文件中，用 crontab file 的方式来设定执行时间。
+
+  **示例：** 
+
+  * 每一分钟执行一次 `/bin/ls` 
+
+    ```bash
+    * * * * * /bin/ls
+    ```
+
+  * 在 12 月内, 每天的早上 6 点到 12 点，每隔 3 个小时 0 分钟执行一次 `/usr/bin/backup` 
+
+    ```bash
+    0 6-12/3 * 12 * /usr/bin/backup
+    ```
+
+  * 周一到周五每天下午 5:00 寄一封信给 `alex@domain.name` 
+
+    ```bash
+    0 17 * * 1-5 mail -s "hi" alex@domain.name < /tmp/maildata
+    ```
+
+  * 每月每天的午夜 0 点 20 分, 2 点 20 分, 4 点 20 分....执行 `echo "haha"` 
+
+    ```bash
+    20 0-23/2 * * * echo "haha"
+    ```
+
+  * ```bash
+    0 */2 * * * /sbin/service httpd restart  意思是每两个小时重启一次apache 
+    
+    50 7 * * * /sbin/service sshd start  意思是每天7：50开启ssh服务 
+    
+    50 22 * * * /sbin/service sshd stop  意思是每天22：50关闭ssh服务 
+    
+    0 0 1,15 * * fsck /home  每月1号和15号检查/home 磁盘 
+    
+    1 * * * * /home/bruce/backup  每小时的第一分执行 /home/bruce/backup这个文件 
+    
+    00 03 * * 1-5 find /home "*.xxx" -mtime +4 -exec rm {} \;  每周一至周五3点钟，在目录/home中，查找文件名为*.xxx的文件，并删除4天前的文件
+    
+    30 6 */10 * * ls  意思是每月的1、11、21、31日是的6：30执行一次ls命令
+    ```
+
+    
+
+  **注意：** 
+
+  * 新创建的 `cron` 任务，不会马上执行，至少要过 2 分钟后才可以，当然你可以重启 `cron` 来马上执行。而 linux 任务调度的工作主要分为以下两类：
+
+    - 1、系统执行的工作：系统周期性所要执行的工作，如备份系统数据、清理缓存
+    - 2、个人执行的工作：某个用户定期要做的工作，例如每隔10分钟检查邮件服务器是否有新信，这些工作可由每个用户自行设置
+
+  * 当程序在你所指定的时间执行后，系统会发一封邮件给当前的用户，显示该程序执行的内容，若是你不希望收到这样的邮件，请在每一行空一格之后加上  `> /dev/null 2>&1` 即可
+
+    ```bash
+    20 03 * * * . /etc/profile;/bin/sh /var/www/runoob/test.sh > /dev/null 2>&1
+    ```
+
+  * 如果我们使用 `crontab` 来定时执行脚本，无法执行，但是如果直接通过命令（如： `./test.sh` )又可以正常执行，这主要是因为无法读取环境变量的原因
+
+    解决方法：
+
+    1. 所有命令需要写成绝对路径形式，如： `/usr/local/bin/docker` 
+
+    2. 在 shell 脚本开头使用以下代码：
+
+       ```bash
+       #!/bin/sh
+       . /etc/profile
+       . ~/.bash_profile
+       ```
+
+    3. 在 `/etc/crontab` 中添加环境变量，在可执行命令之前添加命令 `. /etc/profile;/bin/sh` ，使得环境变量生效，例如：
+
+       ```bash
+       20 03 * * * . /etc/profile;/bin/sh /var/www/runoob/test.sh
+       ```
+
+* Code Line 6
+
+  ```bash
+  cat >$work_path/.git/hooks/HOOK_B4xinSynchronize<<EOF
+  ```
+
+   `cat` 命令，查看文件，详情见 <a href="#Sclient.sh-基础代码分析-Code Line 50-61 `Ask_From_Me()`">Sclient.sh-基础代码分析-Code Line 50-61 `Ask_From_Me()`</a> 
+
+#### <a name="Sserver.sh-基础代码分析-Code Line 59-64 `Print_Auto_Show()`">Code Line 59-64 `Print_Auto_Show()`</a> 
+
+* ``` bash
+  Print_Auto_Show(){
+    Crontab_task_show_bakUP="[Crontab定时计划备份]"
+    Crontab_task_show_addPlan="[写入Crontab定时计划]"
+    Crontab_task_show_runCron="[执行Crontab定时计划]"
+    printf "%-5s %-20s %-20s %-20s\n" 任务进行中: $Crontab_task_show_bakUP $Crontab_task_show_addPlan $Crontab_task_show_runCron
+  }
+  ```
+
+* Code Line 5
+
+  ```bash
+  printf "%-5s %-20s %-20s %-20s\n" 任务进行中: $Crontab_task_show_bakUP $Crontab_task_show_addPlan $Crontab_task_show_runCron
+  ```
+
+   `printf` 输出语句
+
+   `%-5s %-20s %-20s %-20s` 格式化字符串
+
+  **格式化操作符：** 
+
+  * |  符号  | 含义                                                         |  符号  | 含义                                             |
+    | :----: | ------------------------------------------------------------ | :----: | ------------------------------------------------ |
+    |   %c   | 转换成字符（ASCII 码值，或者长度为一的字符串）               |   %r   | 优先用 `repr()` 函数进行字符串转换               |
+    |   %s   | 优先用 `str()` 函数进行字符串转换                            | %d  %i | 转成有符号十进制数                               |
+    |   %u   | 转成无符号十进制数                                           |   %o   | 转成无符号八进制数                               |
+    | %x  %X | 转成无符号十六进制数（ `x` / `X` 代表转换后的十六进制字符的大小写） | %e  %E | 转成科学计数法（ `e` / `E` 控制输出 `e` / `E` ） |
+    | %f  %F | 转成浮点数（小数部分自然截断）                               | %g  %G | `%e` 和 `%f` / `%E` 和 `%F` 的简写               |
+    |   %%   | 输出% （格式化字符串里面包括百分号，那么必须使用 `%%` ）     |        |                                                  |
+
+  **内部参数：** 
+
+  *   `*` 定义宽度或者小数点精度
+  *   `-` 左对齐
+  *   `+` 右对齐 或 在正数前面显示 `+` 
+  *   `#` 在八进制数前面显示零 `0` ，在十六进制前面显示 `0x` 或者 `0X` （取决于用的是 `x` 还是 `X` ）
+  *   `0` 显示的数字前面填充 `0` 而不是默认的空格
+  *   `(var)` 映射变量（通常用来处理字段类型的参数）
+  *   `m.n`  `m` 是显示的最小总宽度， `n` 是小数点后的位数（如果可用的话）
+
+  **注意：** 
+
+  * 有的参数可以用在 `%s` 上，有的可以用在其它格式化操作符上。
+
+#### <a name="Sserver.sh-基础代码分析-Code Line 65-69 `Check_Crontab_list()`">Code Line 65-69 `Check_Crontab_list()`</a> 
+
+* ```bash
+  Check_Crontab_list(){
+    info_show "[`date +%Y/%m/%d/%T`] [Info] 当前最新Crontab计划表为："
+   # printf "\033[49;33m当前最新Crontab计划表为：\033[0m\n"
+    crontab -l |bash functions/draw_table.sh -4
+  }
+  ```
+
+* Code Line 4
+
+  定期执行命令，详情见 <a href="#Sserver.sh-基础代码分析-Code Line 38-57 `CrontabPlan_Main()`">Sserver.sh-基础代码分析-Code Line 38-57 `CrontabPlan_Main()`</a> 
+
+#### <a name="Sserver.sh-基础代码分析-Code Line 70-77 `Run_Main()`">Code Line 70-77 `Run_Main()`</a> 
+
+* ```bash
+  Run_Main(){
+    info_show "[`date +%Y/%m/%d/%T`] [Info] 运行中..." && Print_Auto_Show
+    CrontabPlan_Main && Loading_Percent_Show
+    printf "\n"
+    Check_Crontab_list
+    info_show "[`date +%Y/%m/%d/%T`] [Info] ALL DONE..."
+    echo
+  }
+  ```
+
+* Code Line 3
+
+  ``` bash
+  CrontabPlan_Main && Loading_Percent_Show
+  ```
+
+  **基础语法：** 
+
+  * ```bash
+    command1 && command2 && ...
+    ```
+
+    实现逻辑与
+
+     `command1` 执行返回真后执行 `command2` ，否则不执行
+
+    从左向右执行命令，直到命令返回假或者执行完
+
+  * ```bash
+    command1 || command2 || ...
+    ```
+
+    实现逻辑或
+
+     `command1` 执行返回假后执行 `command2` ，否则不执行
+
+    从左向右执行命令，直到命令返回真或者执行完
+
+  * ```bash
+    command1 ; command2 ; ...
+    ```
+
+    顺序执行
+
+  * ```bash
+    ( command1 ; command2 ; ...)
+    ```
+
+    等同于多条命令单独执行
+
+    即使命令中有切换目录的行为后续的命令也是在当前目录执行的
+
+  * ```bash
+    { command1 ; command2 ; ...}
+    ```
+
+    如果使用 `{}` 来代替 `()` ，那么相应的命令将在子 shell 而不是当前 shell 中作为一个整体被执行，只有在 `{}` 中所有命令的输出作为一个整体被重定向时，其中的命令才被放到子 shell 中执行，否则在当前 shell 执行
+
+  *  `||` 优先级小于 `&&` 
+
+  *  `$()` 和 ` `` ` 
+
+    重组命令，将内部命令执行完后输出作为新成分与外部命令组成新命令
+
+#### <a name="Sserver.sh-基础代码分析-Code Line 79-85">Code Line 79-85</a> 
+
+* ```bash
+  work_path="$1"
+  if [ ! -n "$work_path" ];then
+    info_show "[`date +%Y/%m/%d/%T`] [Info] Usage: bash Sserver.sh <path/to/git_workSpace/>"
+    critical "[`date +%Y/%m/%d/%T`] [CRITICAL] ERROR: parameter error"
+    exit;
+  fi
+  Run_Main
+  ```
+
+* Code Line 4
+
+   `critical` 函数，见 <a href="#TODO"><font color="red">**TODO**</font></a> 
+
+* Code Line 5
+
+  ```bash
+  exit
+  ```
+
+  退出 shell 
 
 ***
 
 ***
 
-## test.sh
+## <a name="test.sh">test.sh</a> 
 
-### 源码
+### <a name="test.sh-源码">源码</a> 
 
 ```bash
 #!/bin/bash
@@ -1390,15 +1967,15 @@ progress-bar
 ##
 ```
 
-### 基础代码分析
+### <a name="test.sh-基础代码分析">基础代码分析</a> 
 
 ***
 
 ***
 
-## functions \ banners.sh
+## <a name="functions \ banners.sh">functions \ banners.sh</a> 
 
-### 源码
+### <a name="functions \ banners.sh-源码">源码</a> 
 
 ```bash
 #!/bin/bash
@@ -1415,15 +1992,64 @@ done
 banners_show
 ```
 
-### 基础代码分析
+### <a name="functions \ banners.sh-基础代码分析">基础代码分析</a> 
+
+#### <a name="functions \ banners.sh-基础代码分析-Code Line 3-11">Code Line 3-11</a> 
+
+* ```bash
+  banners_show(){
+  arr=(1 2 3 4)
+  rand=$[$RANDOM % ${#arr[@]}]
+  IFS=$'\n'
+  for line in `cat ./functions/banner${arr[$rand]}.txt`
+  do
+      echo $line
+  done
+  }
+  ```
+
+* Code Line 3
+
+  ```bash
+  rand=$[$RANDOM % ${#arr[@]}]
+  ```
+
+  一般而言，A="a b c def" 这样的变量只是将 $A 替换为一个单一的字符串，
+
+  但是改为 A=(a b c def) ，则是将 $A 定义为组数…
+
+  bash 的组数替换方法可参考如下方法：
+
+  ${A[@]} 或 ${A[*]} 可得到 a b c def (全部组数)
+
+  ${A[0]} 可得到 a (第一个组数)，${A[1]} 则为第二个组数…
+
+  ${#A[@]} 或 ${#A[*]} 可得到 4 (全部组数数量)
+
+  ${#A[0]} 可得到 1 (即第一个组数(a)的长度)，${#A[3]} 可得到 3 (第四个组数(def)的长度)
+
+  A[3]=xyz 则是将第四个组数重新定义为 xyz …
+
+  ${#var} 可计算出变量值的长度
+
+* Code Line 5-8
+
+  ```bash
+  for line in `cat ./functions/banner${arr[$rand]}.txt`
+  do
+      echo $line
+  done
+  ```
+
+   `for` 循环，详情见 <a href="#Sclient.sh-基础代码分析-Code Line 50-61 `Ask_From_Me()`">Sclient.sh-基础代码分析-Code Line 50-61 `Ask_From_Me()`</a> 
 
 ***
 
 ***
 
-## functions \ color_print_fun.sh
+## <a name="functions \ color_print_fun.sh">functions \ color_print_fun.sh</a> 
 
-### 源码
+### <a name="functions \ color_print_fun.sh-源码">源码</a> 
 
 ```bash
 #!/bin/bash
@@ -1508,15 +2134,15 @@ function underline_critical_show() {
 }
 ```
 
-### 基础代码分析
+### <a name="functions \ color_print_fun.sh-基础代码分析">基础代码分析</a> 
 
 ***
 
 ***
 
-## functions \ draw_table.sh
+## <a name="functions \ draw_table.sh">functions \ draw_table.sh</a> 
 
-### 源码
+### <a name="functions \ draw_table.sh-源码">源码</a> 
 
 ```bash
 #!/bin/bash
@@ -1909,15 +2535,15 @@ awk -F '\t' \
     ' 
 ```
 
-### 基础代码分析
+### <a name="functions \ draw_table.sh-基础代码分析">基础代码分析</a> 
 
 ***
 
 ***
 
-## functions \ proxy.sh
+## <a name="functions \ proxy.sh">functions \ proxy.sh</a> 
 
-### 源码
+### <a name="functions \ proxy.sh-源码">源码</a> 
 
 ```bash
 #!/bin/bash
@@ -1967,22 +2593,26 @@ proxy_main(){
 }
 ```
 
-### 基础代码分析
+### <a name="functions \ proxy.sh-基础代码分析">基础代码分析</a> 
 
 ***
 
 ***
 
-# Note
+# <a name="Note">Note</a> 
 
-2022年1月15日15点05分：基本完成Sclient.sh脚本的详细分析
+* 2022年1月15日15点05分：
+  * 基本完成 `Sclient.sh` 脚本的详细分析
+* 2022年1月15日20点00分：
+  * 基本完成 `Sserver.sh` 和 `functions \ banners.sh` 脚本的详细分析
+* 
 
 ***
 
 ***
 
-# TODO
+# <a name="TODO">TODO</a> 
 
-1.  [Code Line 50-61 `Ask_From_Me()` ](####Code Line 50-61 `Ask_From_Me()` ) 
+1.  <a href="#Sclient.sh-基础代码分析-Code Line 50-61 `Ask_From_Me()`">Sclient.sh-基础代码分析-Code Line 50-61 `Ask_From_Me()`</a> 
+2.  <a href="#Sserver.sh-基础代码分析-Code Line 79-85">Sserver.sh-基础代码分析-Code Line 79-85</a> 
 2.  
-
