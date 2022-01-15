@@ -1973,6 +1973,14 @@ proxy_main(){
 
 ***
 
+# Note
+
+2022年1月15日15点05分：基本完成Sclient.sh脚本的详细分析
+
+***
+
+***
+
 # TODO
 
 1.  [Code Line 50-61 `Ask_From_Me()` ](####Code Line 50-61 `Ask_From_Me()` ) 
