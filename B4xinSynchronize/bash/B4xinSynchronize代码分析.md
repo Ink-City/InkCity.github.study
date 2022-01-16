@@ -8,72 +8,80 @@
 
 ### <a name="手动目录">手动目录</a> 
 
-<update 2022-01-15 16:29>
+<update 2022/1/16 21:49>
 
 *  <a href="#B4xinSynchronize代码分析笔记">B4xinSynchronize代码分析笔记</a> 
+
   *  <a href="#目录">目录</a> 
+
     *  <a href="#自动目录">自动目录</a> 
-    
+
     *  <a href="#手动目录">手动目录</a> 
-    
+
   *  <a href="#Sclient.sh">Sclient.sh</a> 
+
     *  <a href="#Sclient.sh-源码">源码</a> 
-    
+
     *  <a href="#Sclient.sh-基础代码分析">基础代码分析</a> 
-    
-    *  <a href="#Sclient.sh-基础代码分析-Code Line 2">Code Line 2</a> 
-    
-    *  <a href="#Sclient.sh-基础代码分析-Code Line 3-5">Code Line 3-5</a> 
-    
-    *  <a href="#Sclient.sh-基础代码分析-Code Line 7">Code Line 7</a> 
-    
-    *  <a href="#Sclient.sh-基础代码分析-Code Line 17-32 `run_Main()`">Code Line 17-32 `run_Main()`</a> 
-    
-    *  <a href="#Sclient.sh-基础代码分析-Code Line 35-47 `Remember_Me_Fun()`">Code Line 35-47 `Remember_Me_Fun()`</a> 
-    
-    *  <a href="#Sclient.sh-基础代码分析-Code Line 50-61 `Ask_From_Me()`">Code Line 50-61 `Ask_From_Me()`</a> 
-    
-    *  <a href="#Sclient.sh-基础代码分析-Code Line 62-76 `differentWorkspace_mode_fun()`">Code Line 62-76 `differentWorkspace_mode_fun()`</a> 
-    
-    *  <a href="#Sclient.sh-基础代码分析-Code Line 78-87 `sameWorkspace_mode_fun()`">Code Line 78-87 `sameWorkspace_mode_fun()`</a> 
-    
-    *  <a href="#Sclient.sh-基础代码分析-Code Line 89-97 `git_valid_check()`">Code Line 89-97 `git_valid_check()`</a> 
-    
-    *  <a href="#Sclient.sh-基础代码分析-Code Line 99-116 `Synchronize_update_fun()`">Code Line 99-116 `Synchronize_update_fun()`</a> 
-    
-    *  <a href="#Sclient.sh-基础代码分析-Code Line 120-145">Code Line 120-145</a> 
-    
+
+       *  <a href="#Sclient.sh-基础代码分析-Code Line 2">Code Line 2</a> 
+
+       *  <a href="#Sclient.sh-基础代码分析-Code Line 3-5">Code Line 3-5</a> 
+
+       *  <a href="#Sclient.sh-基础代码分析-Code Line 7">Code Line 7</a> 
+
+       *  <a href="#Sclient.sh-基础代码分析-Code Line 17-32 `run_Main()`">Code Line 17-32 `run_Main()`</a> 
+
+       *  <a href="#Sclient.sh-基础代码分析-Code Line 35-47 `Remember_Me_Fun()`">Code Line 35-47 `Remember_Me_Fun()`</a> 
+
+       *  <a href="#Sclient.sh-基础代码分析-Code Line 50-61 `Ask_From_Me()`">Code Line 50-61 `Ask_From_Me()`</a> 
+
+       *  <a href="#Sclient.sh-基础代码分析-Code Line 62-76 `differentWorkspace_mode_fun()`">Code Line 62-76 `differentWorkspace_mode_fun()`</a> 
+
+       *  <a href="#Sclient.sh-基础代码分析-Code Line 78-87 `sameWorkspace_mode_fun()`">Code Line 78-87 `sameWorkspace_mode_fun()`</a> 
+
+       *  <a href="#Sclient.sh-基础代码分析-Code Line 89-97 `git_valid_check()`">Code Line 89-97 `git_valid_check()`</a> 
+
+       *  <a href="#Sclient.sh-基础代码分析-Code Line 99-116 `Synchronize_update_fun()`">Code Line 99-116 `Synchronize_update_fun()`</a> 
+
+       *  <a href="#Sclient.sh-基础代码分析-Code Line 120-145">Code Line 120-145</a> 
+
   *  <a href="#Sserver.sh">Sserver.sh</a> 
     *  <a href="#Sserver.sh-源码">源码</a> 
     
     *  <a href="#Sserver.sh-基础代码分析">基础代码分析</a> 
     
-  *  <a href="#test.sh">test.sh</a> 
-    *  <a href="#test.sh-源码">源码</a> 
+       *  <a href="#Sserver.sh-基础代码分析-Code Line 3">Code Line 3</a> 
     
-    *  <a href="#test.sh-基础代码分析">基础代码分析</a> 
+       *  <a href="#Sserver.sh-基础代码分析-Code Line 5-36 `Loading_Percent_Show()`">Code Line 5-36 `Loading_Percent_Show()`</a> 
     
-  *  <a href="#functions \ banners.sh">functions \ banners.sh</a> 
-  
-    *  <a href="#functions \ banners.sh-源码">源码</a> 
-  
-    *  <a href="#functions \ banners.sh-基础代码分析">基础代码分析</a> 
-  
+       *  <a href="#Sserver.sh-基础代码分析-Code Line 38-57 `CrontabPlan_Main()`">Code Line 38-57 `CrontabPlan_Main()`</a> 
+    
+       *  <a href="#Sserver.sh-基础代码分析-Code Line 59-64 `Print_Auto_Show()`">Code Line 59-64 `Print_Auto_Show()`</a> 
+    
+       *  <a href="#Sserver.sh-基础代码分析-Code Line 65-69 `Check_Crontab_list()`">Code Line 65-69 `Check_Crontab_list()`</a> 
+    
+       *  <a href="#Sserver.sh-基础代码分析-Code Line 70-77 `Run_Main()`">Code Line 70-77 `Run_Main()`</a> 
+    
+       *  <a href="#Sserver.sh-基础代码分析-Code Line 79-85">Code Line 79-85</a> 
+    
+  *  <a href="#functions \ banners.sh">functions \ banners.sh</a>
+     *  <a href="#functions \ banners.sh-源码">源码</a> 
+     *  <a href="#functions \ banners.sh-基础代码分析">基础代码分析</a> 
+        *  <a href="#functions \ banners.sh-基础代码分析-Code Line 3-11 `banners_show()`">Code Line 3-11 `banners_show()`</a> 
+
   *  <a href="#functions \ color_print_fun.sh">functions \ color_print_fun.sh</a> 
+
     *  <a href="#functions \ color_print_fun.sh-源码">源码</a> 
-    
+
     *  <a href="#functions \ color_print_fun.sh-基础代码分析">基础代码分析</a> 
-    
-  *  <a href="#functions \ draw_table.sh">functions \ draw_table.sh</a> 
-  
-    *  <a href="#functions \ draw_table.sh-源码">源码</a> 
-  
-    *  <a href="#functions \ draw_table.sh-基础代码分析">基础代码分析</a> 
-  
+
   *  <a href="#functions \ proxy.sh">functions \ proxy.sh</a> 
-  *  <a href="#functions \ proxy.sh-源码">源码</a> 
-    
-  *  <a href="#functions \ proxy.sh-基础代码分析">基础代码分析</a> 
+
+     *  <a href="#functions \ proxy.sh-源码">源码</a> 
+     *  <a href="#functions \ proxy.sh-基础代码分析">基础代码分析</a> 
+        *  <a href="#functions \ proxy.sh-基础代码分析-Code Line 3-16 `proxy_set()`">Code Line 3-16 `proxy_set()`</a> 
+        *  <a href="#functions \ proxy.sh-基础代码分析-Code Line 18-33 `proxy_unset()`">Code Line 18-33 `proxy_unset()`</a> 
   
 *  <a href="#Note">Note</a> 
 
@@ -347,6 +355,120 @@ run_Main
   }
   ```
 
+* Code Line 1
+
+  ```bash
+  run_Main() {
+  	...
+  }
+  ```
+
+  定义函数
+
+  **基本语法：** 
+  
+  * ```bash
+    [ function ] funname [()]
+    {
+        action;
+        [return int;]
+    }
+    ```
+  
+  **注意：** 
+  
+  * 可以带 `function fun()` 定义，也可以直接 `fun()` 定义,不带任何参数。
+  
+  * 参数返回，可以显示加： `return` 返回，如果不加，将以最后一条命令运行结果，作为返回值。  `return` 后跟数值 `n` ( 0-255 ) 
+  
+  * 在 Shell 中，调用函数时可以向其传递参数。在函数体内部，通过 `$n` 的形式来获取参数的值，例如， `$1` 表示第一个参数， `$2` 表示第二个参数
+  
+  *  `$10` 不能获取第十个参数，获取第十个参数需要 `${10}` 。当 `n` >=10时，需要使用 `${n}` 来获取参数
+  
+  * | 参数 | 含义                                                         |
+    | :--: | ------------------------------------------------------------ |
+    |  $#  | 传递到脚本或函数的参数个数                                   |
+    |  $*  | 以一个单字符串显示所有向脚本传递的参数                       |
+    |  $$  | 脚本运行的当前进程ID号                                       |
+    |  $!  | 后台运行的最后一个进程的ID号                                 |
+    |  $@  | 与$*相同，但是使用时加引号，并在引号中返回每个参数。         |
+    |  $-  | 显示Shell使用的当前选项，与set命令功能相同。                 |
+    |  $?  | 显示最后命令的退出状态。0表示没有错误，其他任何值表明有错误。 |
+  
+  **示例：** 
+  
+  * ```bash
+    demoFun(){
+        echo "这是我的第一个 shell 函数!"
+    }
+    echo "-----函数开始执行-----"
+    demoFun
+    echo "-----函数执行完毕-----"
+    ```
+  
+    结果：
+  
+    ```bash
+    -----函数开始执行-----
+    这是我的第一个 shell 函数!
+    -----函数执行完毕-----
+    ```
+  
+  * ```bash
+    funWithReturn(){
+        echo "这个函数会对输入的两个数字进行相加运算..."
+        echo "输入第一个数字: "
+        read aNum
+        echo "输入第二个数字: "
+        read anotherNum
+        echo "两个数字分别为 $aNum 和 $anotherNum !"
+        return $(($aNum+$anotherNum))
+    }
+    funWithReturn
+    echo "输入的两个数字之和为 $? !"
+    ```
+  
+    结果：
+  
+    ```bash
+    这个函数会对输入的两个数字进行相加运算...
+    输入第一个数字: 
+    1
+    输入第二个数字: 
+    2
+    两个数字分别为 1 和 2 !
+    输入的两个数字之和为 3 !
+    ```
+  
+     `$?` 表示上一条指令的返回值
+  
+  * ```bash
+    funWithParam(){
+        echo "第一个参数为 $1 !"
+        echo "第二个参数为 $2 !"
+        echo "第十个参数为 $10 !"
+        echo "第十个参数为 ${10} !"
+        echo "第十一个参数为 ${11} !"
+        echo "参数总数有 $# 个!"
+        echo "作为一个字符串输出所有参数 $* !"
+    }
+    funWithParam 1 2 3 4 5 6 7 8 9 34 73
+    ```
+  
+    结果：
+  
+    ```bash
+    第一个参数为 1 !
+    第二个参数为 2 !
+    第十个参数为 10 !
+    第十个参数为 34 !
+    第十一个参数为 73 !
+    参数总数有 11 个!
+    作为一个字符串输出所有参数 1 2 3 4 5 6 7 8 9 34 73 !
+    ```
+  
+  * 
+  
 * Code Line 5
 
   ```bash
@@ -537,11 +659,65 @@ run_Main
   echo testPra2=$testPra >>config/user_config.sh
   ```
   
-  输出语句，`>>` 表示将内容输出到某个文件内
+  输出语句
   
-  ```bash
-  echo [value] >> [filename]
-  ```
+  *  `>>` 表示将内容追加输出到某个文件内
+  
+    ```bash
+    echo [value] >> [filename]
+    ```
+  
+  *  `>` 表示将内容覆盖输出到某个文件内
+  
+    ```bash
+    echo [value] >> [filename]
+    ```
+  
+  * 显示普通字符串
+  
+    ```bash
+    echo "It is a test"
+    echo It is a test
+    ```
+  
+  * 显示转义字符
+  
+    ```bash
+    echo "\"It is a test\""
+    ```
+  
+    输出
+  
+    ```bash
+    "It is a test"
+    ```
+  
+  * 显示变量
+  
+    ```bash
+    echo $name
+    ```
+  
+  * 显示换行 / 不换行
+  
+    ```bash
+    echo -e "\n"
+    echo -e "\c"
+    ```
+  
+    *  `-e` 开启转义可以转移换行（ `\n` ）、不换行（ `\c` ）等
+  
+  * 执行语句
+  
+    ```bash
+    echo `date`
+    ```
+  
+    输出
+  
+    ```bash
+    Sun Jan 16 18:11:29 2022
+    ```
 
 ***
 
@@ -576,7 +752,7 @@ run_Main
   common_show "Detected user's conf files in ./config/user_config.sh"
   ```
 
-   `common_show` 函数，见 <a href="#TODO"><font color="red">**TODO**</font></a> 
+   `common_show` 函数，见 <a href="#functions \ color_print_fun.sh">functions \ color_print_fun.sh</a> 
 
 * Code Line 5
 
@@ -1848,7 +2024,7 @@ Run_Main
 
 * Code Line 4
 
-   `critical` 函数，见 <a href="#TODO"><font color="red">**TODO**</font></a> 
+   `critical` 函数，见 <a href="#functions \ color_print_fun.sh">functions \ color_print_fun.sh</a> 
 
 * Code Line 5
 
@@ -1857,117 +2033,6 @@ Run_Main
   ```
 
   退出 shell 
-
-***
-
-***
-
-## <a name="test.sh">test.sh</a> 
-
-### <a name="test.sh-源码">源码</a> 
-
-```bash
-#!/bin/bash
-source ./functions/color_print_fun.sh
-
-############################################################################################################
-##未完成：可以实现运行时加载动画，但是似乎是因为覆盖console的原因导致了在程序输出运行时加载动画同样有闪烁覆盖的效果，暂未解决##
-############################################################################################################
-# for k in {1..10};do echo -ne "\r1.1.1.1$k\t" && sleep 0.3;done &
-# pid=$!
-
-# spin[1]="▁"
-# spin[2]="▃"
-# spin[3]="▄"
-# spin[4]="▅"
-# spin[5]="▆"
-# spin[6]="▇"
-# spin[7]="▆"
-# spin[8]="▅"
-# spin[9]="▄"
-# spin[10]="▃"
-# echo -ne "[Running] ${spin[0]}"
-
-# while [ "kill -0 $pid" ]; do
-#   for i in "${spin[@]}" ; do
-#         echo -ne "\b$i"
-#         sleep 0.3
-#   done
-# done
-
-############################################################################################################
-SLEEP_DURATION=${SLEEP_DURATION:=1}  # default to 1 second, use to speed up tests
-
-progress-bar() {
-  local duration
-  local columns
-  local space_available
-  local fit_to_screen  
-  local space_reserved
-
-  space_reserved=6   # reserved width for the percentage value
-  duration=${1}
-  columns=$(tput cols)
-  space_available=$(( columns-space_reserved ))
-
-  if (( duration < space_available )); then 
-  	fit_to_screen=1; 
-  else 
-    fit_to_screen=$(( duration / space_available )); 
-    fit_to_screen=$((fit_to_screen+1)); 
-  fi
-
-  already_done() { for ((done=0; done<(elapsed / fit_to_screen) ; done=done+1 )); do printf "▇"; done }
-  remaining() { for (( remain=(elapsed/fit_to_screen) ; remain<(duration/fit_to_screen) ; remain=remain+1 )); do printf " "; done }
-  percentage() { printf "| %s%%" $(( ((elapsed)*100)/(duration)*100/100 )); }
-  clean_line() { printf "\r"; }
-
-  for (( elapsed=1; elapsed<=duration; elapsed=elapsed+1 )); do
-      already_done; remaining; percentage
-      sleep "$SLEEP_DURATION"
-      clean_line
-  done
-  clean_line
-}
-
-progress-bar
-############################################################################################################
-## nice progress pinner.
-# 1. Create ProgressBar function
-# 1.1 Input is currentState($1) and totalState($2)
-# function ProgressBar {
-# # Process data
-#     let _progress=(${1}*100/${2}*100)/100
-#     let _done=(${_progress}*4)/10
-#     let _left=40-$_done
-# # Build progressbar string lengths
-#     _fill=$(printf "%${_done}s")
-#     _empty=$(printf "%${_left}s")
-
-# # 1.2 Build progressbar strings and print the ProgressBar line
-# # 1.2.1 Output example:                           
-# # 1.2.1.1 Progress : [########################################] 100%
-# printf "\rProgress : [${_fill// /#}${_empty// /=}] ${_progress}%%"
-
-# }
-
-# # Variables
-# _start=1
-
-# # This accounts as the "totalState" variable for the ProgressBar function
-# _end=100
-
-# # Proof of concept
-# for number in $(seq ${_start} ${_end})
-# do
-#     sleep 0.1
-#     ProgressBar ${number} ${_end}
-# done
-# printf '\nFinished!\n'
-##
-```
-
-### <a name="test.sh-基础代码分析">基础代码分析</a> 
 
 ***
 
@@ -1994,7 +2059,7 @@ banners_show
 
 ### <a name="functions \ banners.sh-基础代码分析">基础代码分析</a> 
 
-#### <a name="functions \ banners.sh-基础代码分析-Code Line 3-11">Code Line 3-11</a> 
+#### <a name="functions \ banners.sh-基础代码分析-Code Line 3-11 `banners_show()`">Code Line 3-11 `banners_show()`</a> 
 
 * ```bash
   banners_show(){
@@ -2136,406 +2201,38 @@ function underline_critical_show() {
 
 ### <a name="functions \ color_print_fun.sh-基础代码分析">基础代码分析</a> 
 
-***
+* 输出不同颜色的字
 
-***
+* 用法：
 
-## <a name="functions \ draw_table.sh">functions \ draw_table.sh</a> 
+  * ```bash
+    echo -e “\033[41;36m something here \033[0m”
+    ```
 
-### <a name="functions \ draw_table.sh-源码">源码</a> 
+    其中 `41` 的位置代表底色， `36` 的位置是代表字的颜色， `\033[0m` 是ANSI控制码
 
-```bash
-#!/bin/bash
-#################################################################
-# 绘制表格
-# 作者：banemon
-# 邮箱：banemon@
-# Git ：https://gitee.com/banemon/linux_sh_script
-# 命令：draw_table.sh <file.txt
-# 或者：echo -e "A\tB\na\tb"|draw_table.sh
-# 帮助：draw_table.sh --help
-# 制表符大全
-# ─━│┃╌╍╎╏┄┅┆┇┈┉┊┋┌┍┎┏┐┑┒┓└┕┖┗┘┙┚┛├┝┞┟┠┡┢┣┤┥┦┧┨┩┪┫┬┭┮┯┰┱┲┳┴┵┶┷┸┹┺┻┼┽┾┿╀╁╂╃╄╅╆╇╈╉╊╋╪╫╬═║╒╓╔╕╖╗╘╙╚╛╜╝╞╟╠╡╢╣╤╥╦╧╨╩╔╗╝╚╬═╓╩┠┨┯┷┏┓┗┛┳⊥﹃﹄┌╮╭╯╰╳
-# ╲╱
-# ╱╲
-tbc7="╭";tbc9="╮";
-tbc1="╰";tbc3="╯";
-tbx0="╳";
-# 样式
-style="$1"
-case $style in
-    # 1 2 3 4 5 6 7 8 9 10       11      12      13       14      15      16
-    # 1 2 3 4 5 6 7 8 9 txt_empt top_row mid_row btm_row left_col mid_col right_col 
-    -0)  tbs="                ";;
-    -1)  tbs="└┴┘├┼┤┌┬┐ ───│││";;
-    -2)  tbs="└─┘│┼│┌─┐ ───│││";;
-    -3)  tbs="╚╩╝╠╬╣╔╦╗ ═══║║║";;
-    -4)  tbs="╚═╝║╬║╔═╗ ═══║║║";;
-    -5)  tbs="╙╨╜╟╫╢╓╥╖ ───║║║";;
-    -6)  tbs="╘╧╛╞╪╡╒╤╕ ═══│││";;
-    -7)  tbs="└┴┘├┼┤┌┬┐ ─ ─│ │";;
-    -8)  tbs="└─┘│┼│┌─┐ ─ ─│ │";;
-    -9)  tbs="╚╩╝╠╬╣╔╦╗ ═ ═║ ║";;
-    -10) tbs="╚═╝║╬║╔═╗ ═ ═║ ║";;
-    -11) tbs="╙╨╜╟╫╢╓╥╖ ─ ─║ ║";;
-    -12) tbs="╘╧╛╞╪╡╒╤╕ ═ ═│ │";;
-    -13) tbs="╘╧╛╞╪╡╒╤╕ ═ ═│ │";;
-    -14) tbs="╚╩╝╠╬╣╔╦╗ ───│││";;
-    -15) tbs="+++++++++ ---|||";;
-    "%"*) tbs="${style/"%"/}";;
-    -h*|--h*)
-        echo -e '
- [  ---   HELP  ---  ]
-\t command : draw_table.sh [style] [colors] < <file >
-\t    pipo : echo -e A\\tB\\na\\tb | draw_table.sh [style] [colors]
-\t [style] : input 16 characters
-\t           1~9 is Num. keypad as table,10 is not used
-\t           11~13 are left,middle,right in a row
-\t           14~16 are left,middle,right in a column
-\t
-\t         -0  :                
-\t         -1  :└┴┘├┼┤┌┬┐ ───│││         -9  :╚╩╝╠╬╣╔╦╗ ═ ═║ ║
-\t         -2  :└─┘│┼│┌─┐ ───│││         -10 :╚═╝║╬║╔═╗ ═ ═║ ║
-\t         -3  :╚╩╝╠╬╣╔╦╗ ═══║║║         -11 :╙╨╜╟╫╢╓╥╖ ─ ─║ ║
-\t         -4  :╚═╝║╬║╔═╗ ═══║║║         -12 :╘╧╛╞╪╡╒╤╕ ═ ═│ │
-\t         -5  :╙╨╜╟╫╢╓╥╖ ───║║║         -13 :╘╧╛╞╪╡╒╤╕ ═ ═│ │
-\t         -6  :╘╧╛╞╪╡╒╤╕ ═══│││         -14 :╚╩╝╠╬╣╔╦╗ ───│││
-\t         -7  :└┴┘├┼┤┌┬┐ ─ ─│ │         -15 :+++++++++ ---|||
-\t         -8  :└─┘│┼│┌─┐ ─ ─│ │
-\t
-\t [colors]: input a list,like "-3,-4,-8" sames "-green,-yellow,-white"
-\t           It set color,table cross ,font ,middle. Or \\033[xxm .
-\t           And support custom color set  every characters of sytle
-\t           Like "\\033[30m,-red,-yellow,,,,,,,,,,,,," sum 16.
-\t
-\t          -1|-black         -5|-blue
-\t          -2|-red           -6|-purple
-\t          -3|-green         -7|-cyan
-\t          -4|-yellow        -8|-white
-        '
-        exit
-        ;;
-esac
-tbs="${tbs:-"+++++++++,---|||"}"
- 
-# 颜色
-color="$2"
-case $color in
-    1) ;;
-    2) ;;
-    3) ;;
-    "-"*|"\033"*)
-        # 3位数标,词
-        colors="$color"
-        ;;
-    "%"*) :
-        # 全自定义
-        colors="${color/"%"/}"
-        ;;
-esac
-colors="${colors:-"-4,-8,-4"}"
- 
-# 主体
-awk -F '\t' \
-    -v table_s="$tbs" \
-    -v color_s="$colors" \
-    'BEGIN{
-    }{
-        for(i=1;i<=NF;i++){
-            # 每列最大长度
-            cols_len[i]=cols_len[i]<length($i)?length($i):cols_len[i]
-            # 每行每列值
-            rows[NR][i]=$i
-        }
- 
-        # 前后行状态
-        if(NR==1){
-            befor=0
-        }else if(1==2){
-            after=0
-        }
-        rows[NR][0] = befor "," NF
-        befor=NF
-    }END{
-        # 颜色表
-        color_sum = split(color_s,clr_id,",")
-        if(color_sum==3){
-            # 简易自定义模式
-            for(i=1;i<=3;i++){
-                if(color_s~"-"){
-                    clr_id[i] = color_var(clr_id[i])
-                }else if(colors~"\033["){
-                    clr_id[i] = cclr_id[i]
-                }
-            }
- 
-            # 组建色表
-            for(i=1;i<=16;i++){
-                if(i<10){
-                    colors[i] = clr_id[1]
-                }else if(i==10){
-                    colors[i] = clr_id[2]
-                }else if(i>10){
-                    colors[i] = clr_id[3]
-                }
-            }
-        }else if(color_sum==16){
-            # 全自定义模式
-            for(i=1;i<=16;i++){
-                if(color_s~"-"){
-                    clr_id[i] = color_var(clr_id[i])
-                }else if(colors~"\033["){
-                    clr_id[i] = cclr_id[i]
-                }
-                #colors[i] = clr_id[i]
-            }
-        }
-        #split(color_s,colors,",")
-        clr_end = "\033[0m"
-            clr_font = colors[10]
-            #clr_cross = colrs[2]
-            #clr_blank = colors[3]
-        # 制表符二维表并着色
-        for(i=1;i<=length(table_s);i++){
-            if(colors[i]=="")
-                tbs[i] = substr(table_s,i,1)
-            else
-                tbs[i] = colors[i] substr(table_s,i,1) clr_end
-            fi
-        }
-        # 绘制上边框
-        top_line=line_val("top")
- 
-        # 绘制文本行
- 
-        # 绘制分隔行
-        mid_line=line_val("mid")
-        # 绘制下边框
-        btm_line=line_val("btm")
- 
-        # 行最大总长度
-        line_len_sum=0
-        for(i=1;i<=length(cols_len);i++){
-            line_len_sum=line_len_sum + cols_len[i] + 2
-        }
-        line_len_sum=line_len_sum + length(cols_len) - 1
- 
-        # 所有表格线预存（提高效率）
-        title_top = line_val("title_top")
-        top = line_val("top")
-        title_mid = line_val("title_mid")
-        title_btm_mid = line_val("title_btm_mid")
-        title_top_mid = line_val("title_top_mid")
-        mid = line_val("mid")
-        title_btm = line_val("title_btm")
-        btm = line_val("btm")
- 
-        # 绘制表格 2
-        line_rows_sum=length(rows)
-        for(i=1;i<=line_rows_sum;i++){
-            # 状态值
-            split(rows[i][0],status,",")
-            befors=int(status[1])
-            nows=int(status[2])
- 
-            if(i==1 && befors==0){
-                # 首行时
-                if(nows<=1){
-                    # 单列
-                    print title_top
-                    print line_val("title_txt",rows[i][1],line_len_sum)
-                
-                }else if(nows>=2){
-                    # 多列
-                    print top
-                    print line_val("txt",rows[i])
-                
-                }   
-            }else if(befors<=1){
-                # 前一行为单列时
-                if(nows<=1){
-                    # 单列
-                    print title_mid
-                    print line_val("title_txt",rows[i][1],line_len_sum)
- 
-                }else if(nows>=2){
-                    # 多列
-                    print title_btm_mid
-                    print line_val("txt",rows[i])
-                }
-            
-            }else if(befors>=2){
-                # 前一行为多列时
-                if(nows<=1){
-                    # 单列
-                    print title_top_mid
-                    print line_val("title_txt",rows[i][1],line_len_sum)
- 
-                }else if(nows>=2){
-                    # 多列
-                    print mid
-                    print line_val("txt",rows[i])
-                }
-            }
-            # 表格底边
-            if(i==line_rows_sum && nows<=1){
-                # 尾行单列时
-                print title_btm
-            }else if(i==line_rows_sum && nows>=2){
-                # 尾行多列时
-                print btm
-            }
-        }
- 
-    }
-    function color_var(  color){
-        # 颜色
-        #local color=$1
-        #case $color in
-        if(color=="-1" ||color=="-black"){
-            n=30
-        }else if(color=="-2" || color=="-red"){
-            n=31
-        }else if(color=="-3" || color=="-green"){
-            n=32
-        }else if(color=="-4" || color=="-yellow"){
-            n=33
-        }else if(color=="-5" || color=="-blue"){
-            n=34
-        }else if(color=="-6" || color=="-purple"){
-            n=35
-        }else if(color=="-7" || color=="-cyan"){
-            n=36
-        }else if(color=="-8" || color=="-white"){
-            n=37
-        }else if(color=="-0" || color=="-reset"){
-            n=0
-        }else{
-            n=0
-        }
-        return "\033[" n "m"
-    }
-    function line_val(   part,   txt,  cell_lens,  cell_len,  line,  i){
-        # 更新本次行标
-        if(part=="top"){
-            tbs_l=tbs[7]
-            tbs_m=tbs[8]
-            tbs_r=tbs[9]
-            tbs_b=tbs[11]
-        }else if(part=="mid"){
-            tbs_l=tbs[4]
-            tbs_m=tbs[5]
-            tbs_r=tbs[6]
-            tbs_b=tbs[12]
- 
-        }else if(part=="txt"){
-            tbs_l=tbs[14] tbs[10]
-            tbs_m=tbs[10] tbs[15] tbs[10]
-            tbs_r=tbs[10] tbs[16]
-            tbs_b=tbs[10]
- 
-        }else if(part=="btm"){
-            tbs_l=tbs[1]
-            tbs_m=tbs[2]
-            tbs_r=tbs[3]
-            tbs_b=tbs[13]
- 
-        }else if(part=="title_top"){
-            tbs_l=tbs[7]
-            tbs_m=tbs[11]
-            tbs_r=tbs[9]
-            tbs_b=tbs[11]           
-        }else if(part=="title_top_mid"){
-            tbs_l=tbs[4]
-            tbs_m=tbs[2]
-            tbs_r=tbs[6]
-            tbs_b=tbs[12]           
-        }else if(part=="title_mid"){
-            tbs_l=tbs[4]
-            tbs_m=tbs[12]
-            tbs_r=tbs[6]
-            tbs_b=tbs[12]           
-        }else if(part=="title_txt"){
-            tbs_l=tbs[14]
-            tbs_m=tbs[15]
-            tbs_r=tbs[16]
-            tbs_b=tbs[10]           
-        }else if(part=="title_btm"){
-            tbs_l=tbs[1]
-            tbs_m=tbs[13]
-            tbs_r=tbs[3]
-            tbs_b=tbs[13]           
-        }else if(part=="title_btm_mid"){
-            tbs_l=tbs[4]
-            tbs_m=tbs[8]
-            tbs_r=tbs[6]
-            tbs_b=tbs[12]           
-        }
-        # 制表符着色
-        #   tbs_l = clr_cross tbs_l clr_end
-        #   tbs_m = clr_cross tbs_m clr_end
-        #   tbs_r = clr_cross tbs_r clr_end
-        #   tbs_b = clr_blank tbs_b clr_end
-        # title行只有一列文本
-        if(part=="title_txt"){
-            cols_count=1
-        }else{
-            cols_count=length(cols_len)
-        }
-        line_tail=""
-        for(i=1;i<=cols_count;i++){
-            # 定义当前单元格内容，长度
-            if(part=="txt"){
-                cell_tail=txt[i]
-                cols_len_new=cols_len[i]-length(cell_tail)
-            }else if(part=="title_txt"){
-                # 单列居中
-                cell_tail=txt
-                cols_len_new = ( cell_lens - length(cell_tail) ) / 2
-                cols_len_fix = ( cell_lens - length(cell_tail) ) % 2
-                #print cols_len_new,cols_len_fix
-            }else{
-                cell_tail = ""
-                cols_len_new = cols_len[i] + 2
-            }
-            # 单元格文本着色
-            cell_tail = clr_font cell_tail clr_end
-            # 单元格内空白补全
-            if(part=="title_txt"){
-                # 单列
-                #cols_len_new=cols_len_new/2
-                for(cell_len=1;cell_len<=cols_len_new;cell_len++){
-                    cell_tail= tbs_b cell_tail tbs_b
-                }
-                # 单列非偶长度补全
-                if(cols_len_fix==1){
-                    cell_tail = cell_tail " "
-                }
-            }else{
-                # 多列
-                for(cell_len=1;cell_len<=cols_len_new;cell_len++){
-                    cell_tail=cell_tail tbs_b
-                }
-            }
-            # 首格
-            if(i==1){
-                line_tail=line_tail cell_tail
-            }else{
-                # 中格
-                line_tail=line_tail tbs_m cell_tail
-            }
-            # 尾格
-            if(i==cols_count){
-                line_tail=line_tail tbs_r
-            }   
-        }
-        # 返回行
-        return tbs_l line_tail
-    }
-    ' 
-```
+  * 
 
-### <a name="functions \ draw_table.sh-基础代码分析">基础代码分析</a> 
+* | 背景色参数 | 背景色 | 字色参数 | 字色 |
+  | :--------: | :----: | :------: | :--: |
+  |     40     |   黑   |    30    |  黑  |
+  |     41     |  深红  |    31    |  红  |
+  |     42     |   绿   |    32    |  绿  |
+  |     43     |   黄   |    33    |  黄  |
+  |     44     |   蓝   |    34    |  蓝  |
+  |     45     |   紫   |    35    |  紫  |
+  |     46     |  深绿  |    36    | 深绿 |
+  |     47     |   白   |    37    |  白  |
+
+  |    ANSI控制码     | 说明               |    ANSI控制码    | 说明         | ANSI控制码 | 说明                   |
+  | :---------------: | ------------------ | :--------------: | ------------ | :--------: | ---------------------- |
+  |      \33[0m       | 关闭所有属性       |      \33[1m      | 设置高亮度   |   \33[4m   | 下划线                 |
+  |      \33[5m       | 闪烁               |      \33[7m      | 反显         |   \33[8m   | 消隐                   |
+  | \33[30m – \33[37m | 设置前景色（字色） | 33[40m – \33[47m | 设置背景色   |   \33[nA   | 光标上移n行            |
+  |      \33[nB       | 光标下移n行        |      \33[nC      | 光标右移n行  |   \33[nD   | 光标左移n行            |
+  |     \33[y;xH      | 设置光标位置       |      \33[2J      | 清屏         |   \33[K    | 清除从光标到行尾的内容 |
+  |       \33[s       | 保存光标位置       |      \33[u       | 恢复光标位置 |  \33[?25l  | 隐藏光标               |
+  |     \33[?25h      | 显示光标           |                  |              |            |                        |
 
 ***
 
@@ -2595,6 +2292,150 @@ proxy_main(){
 
 ### <a name="functions \ proxy.sh-基础代码分析">基础代码分析</a> 
 
+#### <a name="functions \ proxy.sh-基础代码分析-Code Line 3-16 `proxy_set()`">Code Line 3-16 `proxy_set()`</a> 
+
+* ```bash
+  proxy_set(){
+    read_msg=$(echo -e "\033[33m[`date +%Y/%m/%d/%T`] [Warn] set proxy ?default:127.0.0.1:8082 (y/n): \033[0m")
+    warn_msg=$(echo -e "\033[33m[`date +%Y/%m/%d/%T`] [Warn] PLZ type in (y/n): \033[0m")
+    read -p "$read_msg" ready
+    while [ "$ready" != 'y' ] && [ "$ready" != 'n' ] && [ "$ready" != '' ]; do
+      read -p "$warn_msg" ready
+    done
+    if [ "$ready" == 'n' ]; then
+      underline_warn_show "● [Warn] Detected user input [no]. \nQuit!"
+      sleep 0.9
+      exit
+    fi
+    export http_proxy='http://127.0.0.1:8082'; export HTTP_PROXY='http://127.0.0.1:8082'; export https_proxy='http://127.0.0.1:8082'; export HTTPS_PROXY='http://127.0.0.1:8082'
+  }
+  ```
+
+* Code Line 2-3
+
+  ```bash
+  read_msg=$(echo -e "\033[33m[`date +%Y/%m/%d/%T`] [Warn] set proxy ?default:127.0.0.1:8082 (y/n): \033[0m")
+  warn_msg=$(echo -e "\033[33m[`date +%Y/%m/%d/%T`] [Warn] PLZ type in (y/n): \033[0m")
+  ```
+
+  复合语句
+
+  * ```bash
+    echo -e "\033[33m[`date +%Y/%m/%d/%T`] [Warn] set proxy ?default:127.0.0.1:8082 (y/n): \033[0m"
+    ```
+
+    输出语句，详情见 <a href="#functions \ color_print_fun.sh-基础代码分析">functions \ color_print_fun.sh-基础代码分析</a> 
+
+  * ```bash
+    \033[33m
+    ```
+
+     `ANSI` 控制符，详情见 <a href="#functions \ color_print_fun.sh-基础代码分析">functions \ color_print_fun.sh-基础代码分析</a> 
+
+* Code Line 4
+
+  ````bash
+  read -p "$read_msg" ready
+  ````
+
+  用户输入，详情见 <a href="#Sclient.sh-基础代码分析-Code Line 62-76 `differentWorkspace_mode_fun()`">Sclient.sh-基础代码分析-Code Line 62-76 `differentWorkspace_mode_fun()`</a> 
+
+* Code Line 5-7
+
+  ```bash
+  while [ "$ready" != 'y' ] && [ "$ready" != 'n' ] && [ "$ready" != '' ]; do
+  	read -p "$warn_msg" ready
+  done
+  ```
+
+   `while` 语句，详情见 <a href="#Sclient.sh-基础代码分析-Code Line 120-145">Sclient.sh-基础代码分析-Code Line 120-145</a> 
+
+* Code Line 8-12
+
+  ```bash
+  if [ "$ready" == 'n' ]; then
+  	underline_warn_show "● [Warn] Detected user input [no]. \nQuit!"
+  	sleep 0.9
+  	exit
+  fi
+  ```
+
+   `if` 语句，详情见 <a href="#Sclient.sh-基础代码分析-Code Line 17-32 `run_Main()`">Sclient.sh-基础代码分析-Code Line 17-32 `run_Main()`</a> 
+
+* Code Line 13
+
+  ```bash
+  export http_proxy='http://127.0.0.1:8082'; export HTTP_PROXY='http://127.0.0.1:8082'; export https_proxy='http://127.0.0.1:8082'; export HTTPS_PROXY='http://127.0.0.1:8082'
+  ```
+
+   `ecport` 详情见 <a href="#Sclient.sh-基础代码分析-Code Line 7">Sclient.sh-基础代码分析-Code Line 7</a> 
+
+   `command1 ; command2 ; ...` 详情见 <a href="#Sserver.sh-基础代码分析-Code Line 70-77 `Run_Main()`">Sserver.sh-基础代码分析-Code Line 70-77 `Run_Main()`</a> 
+
+#### <a name="functions \ proxy.sh-基础代码分析-Code Line 18-33 `proxy_unset()`">Code Line 18-33 `proxy_unset()`</a> 
+
+* ```bash
+  proxy_unset(){
+  #  warn_show "● [Warn] ready to unset Http Proxy Shell. "
+  #  unset_command=$(unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY)
+    read_msg=$(echo -e "\033[33m[`date +%Y/%m/%d/%T`] [Warn] ready to unset Http Proxy Shell? (y/n): \033[0m")
+    warn_msg=$(echo -e "\033[33m[`date +%Y/%m/%d/%T`] [Warn] PLZ type in (y/n): \033[0m")
+    read -p "$read_msg" ready
+    while [ "$ready" != 'y' ] && [ "$ready" != 'n' ] && [ "$ready" != '' ]; do
+      read -p "$warn_msg" ready
+    done
+    if [ "$ready" == 'n' ]; then
+      underline_warn_show "[`date +%Y/%m/%d/%T`] [Warn] Detected user input [no]. \nQuit!"
+      sleep 0.9
+      exit
+    fi
+    unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY
+  }
+  ```
+
+  具体分析与 <a href="#functions \ proxy.sh-基础代码分析-Code Line 3-16 `proxy_set()`">functions \ proxy.sh-基础代码分析-Code Line 3-16 `proxy_set()`</a> 类似
+
+* Code Line 12
+
+  ```bash
+  sleep 0.9
+  ```
+
+  shell 睡眠 0.9 秒
+
+* Code Line 15
+
+  ```bash
+  unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY
+  ```
+
+   `unset` 命令用于删除变量或函数
+
+  **基本语法：** 
+
+  * ```bash
+    unset [-fv][变量或函数名称]
+
+  **基础参数：** 
+
+  *  `-f` 仅删除函数
+  *  `-v ` 仅删除变量
+
+* Code Line 38-45
+
+  ```bash
+  proxy_main(){
+    if [ ! -n "$proxy_content" ]; then
+      info_show "[`date +%Y/%m/%d/%T`] [Info] Detected no proxy export this shell. setting Http Proxy Shell Export Line..."
+      proxy_set
+    else
+      info_show "[`date +%Y/%m/%d/%T`] [Info] Detected proxy export this shell"
+    fi
+  }
+  ```
+
+   `if` 语句，详情见 <a href="#Sclient.sh-基础代码分析-Code Line 17-32 `run_Main()`">Sclient.sh-基础代码分析-Code Line 17-32 `run_Main()`</a> 
+
 ***
 
 ***
@@ -2605,6 +2446,10 @@ proxy_main(){
   * 基本完成 `Sclient.sh` 脚本的详细分析
 * 2022年1月15日20点00分：
   * 基本完成 `Sserver.sh` 和 `functions \ banners.sh` 脚本的详细分析
+* 2022年1月16日21点50分：
+  * 基本完成 `functions \ color_print_fun.sh` 和 `functions \ proxy.sh` 脚本的详细分析
+  * 目录更新
+  *  <a href="#TODO">TODO</a> 清空
 * 
 
 ***
@@ -2613,6 +2458,4 @@ proxy_main(){
 
 # <a name="TODO">TODO</a> 
 
-1.  <a href="#Sclient.sh-基础代码分析-Code Line 50-61 `Ask_From_Me()`">Sclient.sh-基础代码分析-Code Line 50-61 `Ask_From_Me()`</a> 
-2.  <a href="#Sserver.sh-基础代码分析-Code Line 79-85">Sserver.sh-基础代码分析-Code Line 79-85</a> 
-2.  
+1.  
