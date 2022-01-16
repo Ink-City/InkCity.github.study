@@ -10,86 +10,59 @@
 
 <update 2022/1/16 21:49>
 
-*  <a href="#B4xinSynchronize代码分析笔记">B4xinSynchronize代码分析笔记</a> 
+<a href="#B4xinSynchronize代码分析笔记">B4xinSynchronize代码分析笔记</a> 
 
-  *  <a href="#目录">目录</a> 
+├────&nbsp;&nbsp;<a href="#目录">目录</a> 
+├────────&nbsp;&nbsp;<a href="#自动目录">自动目录</a> 
+├────────&nbsp;&nbsp;<a href="#手动目录">手动目录</a> 
+├────&nbsp;&nbsp;<a href="#Sclient.sh">Sclient.sh</a> 
+├────────&nbsp;&nbsp;<a href="#Sclient.sh-源码">源码</a> 
+├────────&nbsp;&nbsp;<a href="#Sclient.sh-基础代码分析">基础代码分析</a> 
+├────────────&nbsp;&nbsp;<a href="#Sclient.sh-基础代码分析-Code Line 2">Code Line 2</a> 
+├────────────&nbsp;&nbsp;<a href="#Sclient.sh-基础代码分析-Code Line 3-5">Code Line 3-5</a> 
+├────────────&nbsp;&nbsp;<a href="#Sclient.sh-基础代码分析-Code Line 7">Code Line 7</a> 
+├────────────&nbsp;&nbsp;<a href="#Sclient.sh-基础代码分析-Code Line 17-32 `run_Main()`">Code Line 17-32 `run_Main()`</a> 
+├────────────&nbsp;&nbsp;<a href="#Sclient.sh-基础代码分析-Code Line 35-47 `Remember_Me_Fun()`">Code Line 35-47 `Remember_Me_Fun()`</a> 
+├────────────&nbsp;&nbsp;<a href="#Sclient.sh-基础代码分析-Code Line 50-61 `Ask_From_Me()`">Code Line 50-61 `Ask_From_Me()`</a> 
+├────────────&nbsp;&nbsp;<a href="#Sclient.sh-基础代码分析-Code Line 62-76 `differentWorkspace_mode_fun()`">Code Line 62-76 `differentWorkspace_mode_fun()`</a> 
+├────────────&nbsp;&nbsp;<a href="#Sclient.sh-基础代码分析-Code Line 78-87 `sameWorkspace_mode_fun()`">Code Line 78-87 `sameWorkspace_mode_fun()`</a> 
+├────────────&nbsp;&nbsp;<a href="#Sclient.sh-基础代码分析-Code Line 89-97 `git_valid_check()`">Code Line 89-97 `git_valid_check()`</a> 
+├────────────&nbsp;&nbsp;<a href="#Sclient.sh-基础代码分析-Code Line 99-116 `Synchronize_update_fun()`">Code Line 99-116 `Synchronize_update_fun()`</a> 
+├────────────&nbsp;&nbsp;<a href="#Sclient.sh-基础代码分析-Code Line 120-145">Code Line 120-145</a> 
+├────&nbsp;&nbsp;<a href="#Sserver.sh">Sserver.sh</a> 
+├────────&nbsp;&nbsp;<a href="#Sserver.sh-源码">源码</a> 
+├────────&nbsp;&nbsp;<a href="#Sserver.sh-基础代码分析">基础代码分析</a> 
+├────────────&nbsp;&nbsp;<a href="#Sserver.sh-基础代码分析-Code Line 3">Code Line 3</a> 
+├────────────&nbsp;&nbsp;<a href="#Sserver.sh-基础代码分析-Code Line 5-36 `Loading_Percent_Show()`">Code Line 5-36 `Loading_Percent_Show()`</a> 
+├────────────&nbsp;&nbsp;<a href="#Sserver.sh-基础代码分析-Code Line 38-57 `CrontabPlan_Main()`">Code Line 38-57 `CrontabPlan_Main()`</a> 
+├────────────&nbsp;&nbsp;<a href="#Sserver.sh-基础代码分析-Code Line 59-64 `Print_Auto_Show()`">Code Line 59-64 `Print_Auto_Show()`</a> 
+├────────────&nbsp;&nbsp;<a href="#Sserver.sh-基础代码分析-Code Line 65-69 `Check_Crontab_list()`">Code Line 65-69 `Check_Crontab_list()`</a> 
+├────────────&nbsp;&nbsp;<a href="#Sserver.sh-基础代码分析-Code Line 70-77 `Run_Main()`">Code Line 70-77 `Run_Main()`</a> 
+├────────────&nbsp;&nbsp;<a href="#Sserver.sh-基础代码分析-Code Line 79-85">Code Line 79-85</a> 
+├────&nbsp;&nbsp;<a href="#functions \ banners.sh">functions \ banners.sh</a>
+├────────&nbsp;&nbsp;<a href="#functions \ banners.sh-源码">源码</a> 
+├────────&nbsp;&nbsp;<a href="#functions \ banners.sh-基础代码分析">基础代码分析</a> 
+├────────────&nbsp;&nbsp;<a href="#functions \ banners.sh-基础代码分析-Code Line 3-11 `banners_show()`">Code Line 3-11 `banners_show()`</a> 
+├────&nbsp;&nbsp;<a href="#functions \ color_print_fun.sh">functions \ color_print_fun.sh</a> 
+├────────&nbsp;&nbsp;<a href="#functions \ color_print_fun.sh-源码">源码</a> 
+├────────&nbsp;&nbsp;<a href="#functions \ color_print_fun.sh-基础代码分析">基础代码分析</a> 
+├────&nbsp;&nbsp;<a href="#functions \ proxy.sh">functions \ proxy.sh</a> 
+├────────&nbsp;&nbsp;<a href="#functions \ proxy.sh-源码">源码</a> 
+├────────&nbsp;&nbsp;<a href="#functions \ proxy.sh-基础代码分析">基础代码分析</a> 
+├────────────&nbsp;&nbsp;<a href="#functions \ proxy.sh-基础代码分析-Code Line 3-16 `proxy_set()`">Code Line 3-16 `proxy_set()`</a> 
+├────────────&nbsp;&nbsp;<a href="#functions \ proxy.sh-基础代码分析-Code Line 18-33 `proxy_unset()`">Code Line 18-33 `proxy_unset()`</a> 
+├────&nbsp;&nbsp;<a href="#Note">Note</a> 
+└────&nbsp;&nbsp;<a href="#TODO">TODO</a> 
 
-    *  <a href="#自动目录">自动目录</a> 
+***
 
-    *  <a href="#手动目录">手动目录</a> 
-
-  *  <a href="#Sclient.sh">Sclient.sh</a> 
-
-    *  <a href="#Sclient.sh-源码">源码</a> 
-
-    *  <a href="#Sclient.sh-基础代码分析">基础代码分析</a> 
-
-       *  <a href="#Sclient.sh-基础代码分析-Code Line 2">Code Line 2</a> 
-
-       *  <a href="#Sclient.sh-基础代码分析-Code Line 3-5">Code Line 3-5</a> 
-
-       *  <a href="#Sclient.sh-基础代码分析-Code Line 7">Code Line 7</a> 
-
-       *  <a href="#Sclient.sh-基础代码分析-Code Line 17-32 `run_Main()`">Code Line 17-32 `run_Main()`</a> 
-
-       *  <a href="#Sclient.sh-基础代码分析-Code Line 35-47 `Remember_Me_Fun()`">Code Line 35-47 `Remember_Me_Fun()`</a> 
-
-       *  <a href="#Sclient.sh-基础代码分析-Code Line 50-61 `Ask_From_Me()`">Code Line 50-61 `Ask_From_Me()`</a> 
-
-       *  <a href="#Sclient.sh-基础代码分析-Code Line 62-76 `differentWorkspace_mode_fun()`">Code Line 62-76 `differentWorkspace_mode_fun()`</a> 
-
-       *  <a href="#Sclient.sh-基础代码分析-Code Line 78-87 `sameWorkspace_mode_fun()`">Code Line 78-87 `sameWorkspace_mode_fun()`</a> 
-
-       *  <a href="#Sclient.sh-基础代码分析-Code Line 89-97 `git_valid_check()`">Code Line 89-97 `git_valid_check()`</a> 
-
-       *  <a href="#Sclient.sh-基础代码分析-Code Line 99-116 `Synchronize_update_fun()`">Code Line 99-116 `Synchronize_update_fun()`</a> 
-
-       *  <a href="#Sclient.sh-基础代码分析-Code Line 120-145">Code Line 120-145</a> 
-
-  *  <a href="#Sserver.sh">Sserver.sh</a> 
-    *  <a href="#Sserver.sh-源码">源码</a> 
-    
-    *  <a href="#Sserver.sh-基础代码分析">基础代码分析</a> 
-    
-       *  <a href="#Sserver.sh-基础代码分析-Code Line 3">Code Line 3</a> 
-    
-       *  <a href="#Sserver.sh-基础代码分析-Code Line 5-36 `Loading_Percent_Show()`">Code Line 5-36 `Loading_Percent_Show()`</a> 
-    
-       *  <a href="#Sserver.sh-基础代码分析-Code Line 38-57 `CrontabPlan_Main()`">Code Line 38-57 `CrontabPlan_Main()`</a> 
-    
-       *  <a href="#Sserver.sh-基础代码分析-Code Line 59-64 `Print_Auto_Show()`">Code Line 59-64 `Print_Auto_Show()`</a> 
-    
-       *  <a href="#Sserver.sh-基础代码分析-Code Line 65-69 `Check_Crontab_list()`">Code Line 65-69 `Check_Crontab_list()`</a> 
-    
-       *  <a href="#Sserver.sh-基础代码分析-Code Line 70-77 `Run_Main()`">Code Line 70-77 `Run_Main()`</a> 
-    
-       *  <a href="#Sserver.sh-基础代码分析-Code Line 79-85">Code Line 79-85</a> 
-    
-  *  <a href="#functions \ banners.sh">functions \ banners.sh</a>
-     *  <a href="#functions \ banners.sh-源码">源码</a> 
-     *  <a href="#functions \ banners.sh-基础代码分析">基础代码分析</a> 
-        *  <a href="#functions \ banners.sh-基础代码分析-Code Line 3-11 `banners_show()`">Code Line 3-11 `banners_show()`</a> 
-
-  *  <a href="#functions \ color_print_fun.sh">functions \ color_print_fun.sh</a> 
-
-    *  <a href="#functions \ color_print_fun.sh-源码">源码</a> 
-
-    *  <a href="#functions \ color_print_fun.sh-基础代码分析">基础代码分析</a> 
-
-  *  <a href="#functions \ proxy.sh">functions \ proxy.sh</a> 
-
-     *  <a href="#functions \ proxy.sh-源码">源码</a> 
-     *  <a href="#functions \ proxy.sh-基础代码分析">基础代码分析</a> 
-        *  <a href="#functions \ proxy.sh-基础代码分析-Code Line 3-16 `proxy_set()`">Code Line 3-16 `proxy_set()`</a> 
-        *  <a href="#functions \ proxy.sh-基础代码分析-Code Line 18-33 `proxy_unset()`">Code Line 18-33 `proxy_unset()`</a> 
-  
-*  <a href="#Note">Note</a> 
-
-*  <a href="#TODO">TODO</a> 
+***
 
 ## <a name="Sclient.sh">Sclient.sh</a> 
 
 ### <a name="Sclient.sh-源码">源码</a> 
+
+<details><summary>代码</summary>
 
 ```bash
 #!/bin/bash
@@ -239,6 +212,7 @@ fi
 run_Main
 ##redirect to main func , and main func defined what program will do next one by one or run Concurrently.
 ```
+</details>
 
 ***
 
@@ -1534,6 +1508,8 @@ run_Main
 
 ### <a name="Sserver.sh-源码">源码</a> 
 
+<details><summary>代码</summary>
+
 ```bash
 #!/bin/bash
 ##import color_print_func. use print func to echo to console.
@@ -1668,6 +1644,8 @@ Run_Main
   sleep 0.9
   }
   ```
+
+  </details>
 
 * Code Line 4-20
 
@@ -2042,6 +2020,8 @@ Run_Main
 
 ### <a name="functions \ banners.sh-源码">源码</a> 
 
+<details><summary>代码</summary>
+
 ```bash
 #!/bin/bash
 
@@ -2056,6 +2036,8 @@ done
 }
 banners_show
 ```
+
+</details>
 
 ### <a name="functions \ banners.sh-基础代码分析">基础代码分析</a> 
 
@@ -2115,6 +2097,8 @@ banners_show
 ## <a name="functions \ color_print_fun.sh">functions \ color_print_fun.sh</a> 
 
 ### <a name="functions \ color_print_fun.sh-源码">源码</a> 
+
+<details><summary>代码</summary>
 
 ```bash
 #!/bin/bash
@@ -2199,6 +2183,8 @@ function underline_critical_show() {
 }
 ```
 
+</details>
+
 ### <a name="functions \ color_print_fun.sh-基础代码分析">基础代码分析</a> 
 
 * 输出不同颜色的字
@@ -2241,6 +2227,8 @@ function underline_critical_show() {
 ## <a name="functions \ proxy.sh">functions \ proxy.sh</a> 
 
 ### <a name="functions \ proxy.sh-源码">源码</a> 
+
+<details><summary>代码</summary>
 
 ```bash
 #!/bin/bash
@@ -2289,6 +2277,8 @@ proxy_main(){
   fi
 }
 ```
+
+</details>
 
 ### <a name="functions \ proxy.sh-基础代码分析">基础代码分析</a> 
 
